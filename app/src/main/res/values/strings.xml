@@ -1,0 +1,18 @@
+<resources>
+    <string name="text_search">Search</string>
+    <string name="text_something_wrong">Oops! Something went wrong</string>
+    <string name="text_enter_character_name_above">Enter character name above</string>
+    <string name="text_no_character_listed">No character listed</string>
+    <string name="content_desc_character_image">character image</string>
+    <string name="text_set_name">Set Name</string>
+    <string name="sample_text_value">Value</string>
+    <string name="text_rarity">Rarity</string>
+    <string name="text_release_date">Release Date</string>
+    <string name="text_mana_cost">Mana Cost</string>
+    <string name="text_cmc">CMC</string>
+    <string name="text_oracle_text">Oracle Text</string>
+    <string name="text_type">Type</string>
+    <string name="select_character_from_the_left_pane">Select a character from the left pane</string>
+    <string name="sample_character_name">Character Name</string>
+    <string name="sample_character_gender">Character Gender</string>
+</resources>

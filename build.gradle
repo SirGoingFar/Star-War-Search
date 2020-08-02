@@ -1,0 +1,115 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    multidexVersion = '1.0.3'
+    coreKtxVersion = '1.3.0'
+    constraintLayoutVersion = '2.0.0-beta4'
+    designVersion = '28.0.0'
+    supportVersion = '28.0.0'
+    daggerVersion = '2.25.2'
+    retrofitVersion = '2.6.2'
+    livedataVersion = '2.2.0-rc03'
+    lifecycleVersion = '2.1.0'
+    coroutinesAndroidVersion = '1.3.0'
+    coroutinesLifecycleVersion = '2.2.0-rc03'
+    fragmentVersion = '1.1.0'
+    materialVersion = '1.2.0-alpha05'
+    civVersion = '2.2.0'
+    picassoVersion = '2.71828'
+    swipeRefreshVersion = '1.0.0'
+    loggingInterceptorVersion = '3.10.0'
+    calligraphyVersion = '3.1.1'
+    calligraphyViewPumpVersion = '2.0.3'
+
+    androidXTestCoreVersion = '1.2.0'
+    androidXTestExtKotlinRunnerVersion = '1.1.1'
+    androidXTestExtVersion = '1.1.1'
+    archTestingVersion = '2.0.0'
+    coroutinesTestVersion = '1.2.1'
+    espressoVersion = '3.2.0-beta01'
+    fragmentTestVersion = '1.1.0-alpha07'
+    hamcrestVersion = '1.3'
+    junitVersion = '4.12'
+    robolectricVersion = '4.3.1'
+    mockitoCoreVersion = '2.25.0'
+    mockitoInlineVersion = '2.13.0'
+
+
+    androidDependencies = [
+            kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            multidex          : "com.android.support:multidex:$multidexVersion",
+            core              : "androidx.core:core-ktx:$coreKtxVersion",
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            material          : "com.google.android.material:material:$materialVersion",
+            coroutineLifeCycle: "androidx.lifecycle:lifecycle-runtime-ktx:${coroutinesLifecycleVersion}",
+            fragment          : "androidx.fragment:fragment-ktx:$fragmentVersion",
+            swipeRefresh      : "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion",
+            coroutineKotlin   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesAndroidVersion",
+            coroutineAndroid  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesAndroidVersion}",
+            lifeCycle         : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
+            livedata          : "androidx.lifecycle:lifecycle-livedata-ktx:$livedataVersion",
+            viewmodel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+    ]
+
+    thirdPartyLibDepencies = [
+            daggerCompiler     : "com.google.dagger:dagger-compiler:$daggerVersion",
+            dagger             : "com.google.dagger:dagger:$daggerVersion",
+            circularImageView  : "de.hdodenhof:circleimageview:$civVersion",
+            picasso            : "com.squareup.picasso:picasso:$picassoVersion",
+            retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            gsonConverter      : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            calligraphy        : "io.github.inflationx:calligraphy3:$calligraphyVersion",
+            calligraphyViewPump: "io.github.inflationx:viewpump:$calligraphyViewPumpVersion"
+    ]
+
+    testDependecies = [
+            junit             : "junit:junit:$junitVersion",
+            androidTestExt    : "androidx.test.ext:junit:$androidXTestExtVersion",
+            coroutineTest    : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion",
+            androidXEspresso  : "androidx.test.espresso:espresso-core:$espressoVersion",
+            fragmentTest      : "androidx.fragment:fragment-testing:$fragmentTestVersion",
+            androidTestCore   : "androidx.test:core-ktx:$androidXTestCoreVersion",
+            androidXTestCore  : "androidx.test:core:$androidXTestCoreVersion",
+            architectureTest  : "androidx.arch.core:core-testing:$archTestingVersion",
+            hamcrest          : "org.hamcrest:hamcrest-all:$hamcrestVersion",
+            androidXTestRUnner: "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion",
+            robolectric       : "org.robolectric:robolectric:$robolectricVersion"
+    ]
+
+    projectToolVersion = [
+            compileSdkVersion: 29,
+            minSdkVersion    : 19,
+            targetSdkVersion : 29,
+            buildToolsVersion: "29.0.2"
+    ]
+
+}
