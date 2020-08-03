@@ -1,8 +1,7 @@
-package com.trivago.starwarsearch.views.fragment
+package com.trivago.starwarsearch.views.fragment.character_search
 
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -13,22 +12,22 @@ import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
 import com.trivago.starwarsearch.domain.dto.Character
-import com.trivago.starwarsearch.views.activity.CharacterSearchHostActivity
-import com.trivago.starwarsearch.views.activity.CharacterDetailActivity
-import com.trivago.starwarsearch.views.adapter.CharacterRecyclerViewAdapter
+import com.trivago.starwarsearch.views.activity.character_search.CharacterSearchHostActivity
+import com.trivago.starwarsearch.views.adapter.character_search.CharacterRecyclerViewAdapter
+import com.trivago.starwarsearch.views.fragment.BaseInjectableFragment
 import com.trivago.starwarsearch.views.util.addInfiniteScrollListener
-import com.trivago.starwarsearch.views.viewaction.CharacterListAction
-import com.trivago.starwarsearch.views.viewmodel.CharacterListViewModel
-import com.trivago.starwarsearch.views.viewstate.CharacterListState
+import com.trivago.starwarsearch.views.viewaction.character_search.CharacterSearchAction
+import com.trivago.starwarsearch.views.viewmodel.character_search.CharacterSearchViewModel
+import com.trivago.starwarsearch.views.viewstate.character_search.CharacterSearchState
 import kotlinx.android.synthetic.main.fragment_character_list.*
 import javax.inject.Inject
 
 
-class CharacterListFragment : BaseInjectableFragment<CharacterListState, CharacterListAction>(),
+class CharacterSearchFragment : BaseInjectableFragment<CharacterSearchState, CharacterSearchAction>(),
     SearchView.OnQueryTextListener, CharacterRecyclerViewAdapter.ICharacterClickListener {
 
     @Inject
-    lateinit var screenViewModel: CharacterListViewModel
+    lateinit var screenViewModel: CharacterSearchViewModel
 
     private var mSearchView: SearchView? = null
 
@@ -78,7 +77,10 @@ class CharacterListFragment : BaseInjectableFragment<CharacterListState, Charact
         rv_search_result.layoutManager =
             LinearLayoutManagerWrapper(context!!, LinearLayoutManager.VERTICAL, false)
         rv_search_result.setHasFixedSize(true)
-        mAdapter = CharacterRecyclerViewAdapter(this)
+        mAdapter =
+            CharacterRecyclerViewAdapter(
+                this
+            )
         rv_search_result.adapter = mAdapter
         rv_search_result.addInfiniteScrollListener { screenViewModel.onListScrollToBase() }
 
@@ -111,7 +113,7 @@ class CharacterListFragment : BaseInjectableFragment<CharacterListState, Charact
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onStateChange(viewState: CharacterListState) {
+    override fun onStateChange(viewState: CharacterSearchState) {
         //change view data
         with(viewState) {
             pbLoader.show(showLoader)
@@ -145,7 +147,8 @@ class CharacterListFragment : BaseInjectableFragment<CharacterListState, Charact
     }
 
     companion object {
-        fun newInstance() = CharacterListFragment()
+        fun newInstance() =
+            CharacterSearchFragment()
     }
 
 }

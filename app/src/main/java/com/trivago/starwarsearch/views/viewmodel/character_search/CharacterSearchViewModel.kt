@@ -1,6 +1,5 @@
-package com.trivago.starwarsearch.views.viewmodel
+package com.trivago.starwarsearch.views.viewmodel.character_search
 
-import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.core.exception.EndOfListException
 import com.trivago.starwarsearch.core.exception.Failure
 import com.trivago.starwarsearch.core.exception.NetworkFailure
@@ -10,18 +9,21 @@ import com.trivago.starwarsearch.di.annotation.CharacterSearchScope
 import com.trivago.starwarsearch.domain.dto.Character
 import com.trivago.starwarsearch.domain.usecase.FetchCachedCharacterList
 import com.trivago.starwarsearch.domain.usecase.SearchCharacter
-import com.trivago.starwarsearch.views.viewaction.CharacterListAction
-import com.trivago.starwarsearch.views.viewstate.CharacterListState
+import com.trivago.starwarsearch.views.viewaction.character_search.CharacterSearchAction
+import com.trivago.starwarsearch.views.viewmodel.BaseViewModel
+import com.trivago.starwarsearch.views.viewstate.character_search.CharacterSearchState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
 import javax.inject.Inject
 
 @CharacterSearchScope
-class CharacterListViewModel @Inject constructor(
+class CharacterSearchViewModel @Inject constructor(
     private val searchCharacter: SearchCharacter,
     private val fetchCachedCharacterList: FetchCachedCharacterList
-) : BaseViewModel<CharacterListState, CharacterListAction>(CharacterListState()) {
+) : BaseViewModel<CharacterSearchState, CharacterSearchAction>(
+    CharacterSearchState()
+) {
 
     private var mIsDataLoaded: Boolean = false
     private var mTermSearchJob: Job? = null
@@ -33,9 +35,9 @@ class CharacterListViewModel @Inject constructor(
                 fetchCachedCharacterList.execute(UseCase.None()).fold({}, {
                     if (it.isNotEmpty()) {
                         mIsDataLoaded = true
-                        emit(CharacterListAction.RefreshCharacterList(it))
+                        emit(CharacterSearchAction.RefreshCharacterList(it))
                     } else {
-                        emit(CharacterListAction.SetQueryText(mSearchTerm ?: ""))
+                        emit(CharacterSearchAction.SetQueryText(mSearchTerm ?: ""))
                     }
                 })
             }
@@ -43,22 +45,22 @@ class CharacterListViewModel @Inject constructor(
 
     }
 
-    override fun onChangeState(action: CharacterListAction): CharacterListState {
+    override fun onChangeState(action: CharacterSearchAction): CharacterSearchState {
         return when (action) {
 
-            is CharacterListAction.ToggleLoader -> state.copy(
+            is CharacterSearchAction.ToggleLoader -> state.copy(
                 showLoader = action.show,
                 searchTerm = mSearchTerm ?: ""
             )
 
-            is CharacterListAction.RefreshCharacterList -> state.copy(
+            is CharacterSearchAction.RefreshCharacterList -> state.copy(
                 showLoader = false,
                 showEmptyState = false,
                 characterList = action.newList,
                 searchTerm = mSearchTerm ?: ""
             )
 
-            is CharacterListAction.ShowEmptyState -> state.copy(
+            is CharacterSearchAction.ShowEmptyState -> state.copy(
                 showLoader = false,
                 showEmptyState = true,
                 title = action.title,
@@ -67,7 +69,7 @@ class CharacterListViewModel @Inject constructor(
                 searchTerm = mSearchTerm ?: ""
             )
 
-            is CharacterListAction.SetQueryText -> state.copy(searchTerm = action.text)
+            is CharacterSearchAction.SetQueryText -> state.copy(searchTerm = action.text)
 
         }
     }
@@ -78,7 +80,7 @@ class CharacterListViewModel @Inject constructor(
 
         if (searchTerm.isNullOrEmpty()) {
             emit(
-                CharacterListAction.ShowEmptyState(
+                CharacterSearchAction.ShowEmptyState(
                     "No character listed",
                     "Enter character name above."
                 )
@@ -95,7 +97,7 @@ class CharacterListViewModel @Inject constructor(
                 yield()
 
                 //Make API call to do a search
-                emit(CharacterListAction.ToggleLoader(true))
+                emit(CharacterSearchAction.ToggleLoader(true))
                 searchCharacter.execute(searchTerm).fold(::onSearchFailure, ::onSearchSuccessful)
             }
         )
@@ -110,7 +112,7 @@ class CharacterListViewModel @Inject constructor(
             resolveScreenState(true)
         else {
             mIsDataLoaded = true
-            emit(CharacterListAction.RefreshCharacterList(list))
+            emit(CharacterSearchAction.RefreshCharacterList(list))
         }
     }
 
@@ -121,7 +123,7 @@ class CharacterListViewModel @Inject constructor(
         if (failure is NetworkFailure.ApiCall) {
             if (failure.errorCode == 404) {
                 emit(
-                    CharacterListAction.ShowEmptyState(
+                    CharacterSearchAction.ShowEmptyState(
                         "No character found", String.format(
                             "No character exists with name: '%s'",
                             mSearchTerm
@@ -131,7 +133,7 @@ class CharacterListViewModel @Inject constructor(
             }
             return
         } else if (failure is EndOfListException) {
-            emit(CharacterListAction.ToggleLoader(false))
+            emit(CharacterSearchAction.ToggleLoader(false))
             return
         }
 
@@ -156,7 +158,7 @@ class CharacterListViewModel @Inject constructor(
             "No character exists with name: '%s'",
             mSearchTerm
         ) else "Enter character name above."
-        emit(CharacterListAction.ShowEmptyState(title, body))
+        emit(CharacterSearchAction.ShowEmptyState(title, body))
     }
 
     companion object {

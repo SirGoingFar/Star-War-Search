@@ -1,4 +1,4 @@
-package com.trivago.starwarsearch.views.fragment
+package com.trivago.starwarsearch.views.fragment.character_detail
 
 import android.content.Context
 import android.os.Bundle
@@ -9,9 +9,10 @@ import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
-import com.trivago.starwarsearch.views.viewaction.CharacterDetailAction
-import com.trivago.starwarsearch.views.viewmodel.CharacterDetailViewModel
-import com.trivago.starwarsearch.views.viewstate.CharacterDetailState
+import com.trivago.starwarsearch.views.fragment.BaseInjectableFragment
+import com.trivago.starwarsearch.views.viewaction.character_detail.CharacterDetailAction
+import com.trivago.starwarsearch.views.viewmodel.character_detail.CharacterDetailViewModel
+import com.trivago.starwarsearch.views.viewstate.character_detail.CharacterDetailState
 import kotlinx.android.synthetic.main.fragment_character_detail.*
 import javax.inject.Inject
 
@@ -59,7 +60,8 @@ class CharacterDetailFragment :
 
     companion object {
         const val EXTRA_CHARACTER_URL = "extra_character_url"
-        fun newInstance(characterUrl: String) = CharacterDetailFragment().apply {
+        fun newInstance(characterUrl: String) = CharacterDetailFragment()
+            .apply {
             arguments = Bundle().apply {
                 putString(EXTRA_CHARACTER_URL, characterUrl)
             }

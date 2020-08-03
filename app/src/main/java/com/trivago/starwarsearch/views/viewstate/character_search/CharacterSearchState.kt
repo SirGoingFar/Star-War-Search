@@ -1,8 +1,9 @@
-package com.trivago.starwarsearch.views.viewstate
+package com.trivago.starwarsearch.views.viewstate.character_search
 
 import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.views.viewstate.BaseViewState
 
-data class CharacterListState(
+data class CharacterSearchState(
     val searchTerm: String = "",
     val showLoader: Boolean = false,
     val showEmptyState: Boolean = true,
