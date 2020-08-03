@@ -6,9 +6,9 @@ import com.trivago.starwarsearch.core.exception.NetworkFailure
 import com.trivago.starwarsearch.core.extension.cancelIfActive
 import com.trivago.starwarsearch.core.interactor.UseCase
 import com.trivago.starwarsearch.di.annotation.CharacterSearchScope
-import com.trivago.starwarsearch.domain.dto.Character
-import com.trivago.starwarsearch.domain.usecase.FetchCachedCharacterList
-import com.trivago.starwarsearch.domain.usecase.SearchCharacter
+import com.trivago.starwarsearch.domain.dto.character_search.Character
+import com.trivago.starwarsearch.domain.usecase.character_search.FetchCachedCharacterList
+import com.trivago.starwarsearch.domain.usecase.character_search.SearchCharacter
 import com.trivago.starwarsearch.views.viewaction.character_search.CharacterSearchAction
 import com.trivago.starwarsearch.views.viewmodel.BaseViewModel
 import com.trivago.starwarsearch.views.viewstate.character_search.CharacterSearchState

@@ -14,8 +14,8 @@ android {
         minSdkVersion projectToolVersion.minSdkVersion
         targetSdkVersion projectToolVersion.targetSdkVersion
 
-        versionCode /*gitVersionCode*/1
-        versionName /*"$gitVersionName"*/"1.0"
+        versionCode /*gitVersionCode*/ 1
+        versionName /*"$gitVersionName"*/ "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

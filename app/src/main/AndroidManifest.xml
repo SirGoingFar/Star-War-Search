@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.activity.film.FilmDetailHostActivity"
+            android:label="@string/text_film_detail"/>
+        <activity
+            android:name=".views.activity.film.FilmHostActivity"
+            android:label="@string/text_film"/>
+        <activity
             android:name=".views.activity.character_search.CharacterSearchHostActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,9 +30,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activity.character_detail.CharacterDetailActivity"
-            android:label="@string/text_character_detail"
-            android:parentActivityName=".views.activity.character_search.CharacterSearchHostActivity" />
+            android:name=".views.activity.character_detail.CharacterDetailHostActivity"
+            android:label="@string/text_character_detail"/>
     </application>
 
 </manifest>

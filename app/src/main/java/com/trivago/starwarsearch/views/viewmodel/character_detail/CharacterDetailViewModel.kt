@@ -1,7 +1,7 @@
 package com.trivago.starwarsearch.views.viewmodel.character_detail
 
 import com.trivago.starwarsearch.core.extension.getValueAt
-import com.trivago.starwarsearch.domain.usecase.FetchCharacterByUrl
+import com.trivago.starwarsearch.domain.usecase.character_search.FetchCharacterByUrl
 import com.trivago.starwarsearch.views.util.formatHeight
 import com.trivago.starwarsearch.views.viewaction.character_detail.CharacterDetailAction
 import com.trivago.starwarsearch.views.viewmodel.BaseViewModel
@@ -21,6 +21,7 @@ class CharacterDetailViewModel @Inject constructor(
     override fun onChangeState(action: CharacterDetailAction): CharacterDetailState {
         return when (action) {
             is CharacterDetailAction.SetCharacterDetail -> state.copy(
+                url = action.url,
                 name = action.name,
                 birthYear = action.birthYear,
                 gender = action.gender,
@@ -37,6 +38,7 @@ class CharacterDetailViewModel @Inject constructor(
                 fetchCharacterByUrl.execute(characterUrl).fold({}, {
                     emit(
                         CharacterDetailAction.SetCharacterDetail(
+                            url = it.url,
                             name = it.name,
                             birthYear = it.birthYear,
                             gender = it.gender.capitalize(),

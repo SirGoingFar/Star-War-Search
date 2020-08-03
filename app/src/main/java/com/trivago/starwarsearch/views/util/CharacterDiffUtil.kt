@@ -1,6 +1,6 @@
 package com.trivago.starwarsearch.views.util
 
-import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.domain.dto.character_search.Character
 
 class CharacterDiffUtil : BaseDiffUtil<Character>() {
 
