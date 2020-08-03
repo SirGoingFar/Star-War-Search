@@ -10,6 +10,7 @@ sealed class CharacterDetailAction :
         val birthYear: String? = null,
         val height: String? = null,
         val gender: String? = null,
+        val seeMoreText: String? = null,
         val hasSpecies: Boolean = false,
         val hasFilm: Boolean = false
     ) : CharacterDetailAction()
