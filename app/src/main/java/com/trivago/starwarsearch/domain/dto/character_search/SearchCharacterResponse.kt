@@ -1,7 +1,8 @@
-package com.trivago.starwarsearch.domain.dto
+package com.trivago.starwarsearch.domain.dto.character_search
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.trivago.starwarsearch.domain.dto.character_search.Character
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

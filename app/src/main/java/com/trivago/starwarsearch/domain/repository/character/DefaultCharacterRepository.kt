@@ -1,20 +1,18 @@
-package com.trivago.starwarsearch.domain.repository
+package com.trivago.starwarsearch.domain.repository.character
 
 import com.trivago.starwarsearch.core.exception.EndOfListException
 import com.trivago.starwarsearch.core.exception.Failure
 import com.trivago.starwarsearch.core.exception.NetworkFailure
 import com.trivago.starwarsearch.core.functional.Either
-import com.trivago.starwarsearch.di.annotation.CharacterLocalDataSourceQualifier
-import com.trivago.starwarsearch.di.annotation.CharacterRemoteDataSourceQualifier
-import com.trivago.starwarsearch.domain.datasource.CharacterDataSource
-import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.di.annotation.character.CharacterLocalDataSourceQualifier
+import com.trivago.starwarsearch.di.annotation.character.CharacterRemoteDataSourceQualifier
+import com.trivago.starwarsearch.domain.datasource.character.CharacterDataSource
+import com.trivago.starwarsearch.domain.dto.character_search.Character
 import javax.inject.Inject
 
 class DefaultCharacterRepository @Inject constructor(
-    @CharacterLocalDataSourceQualifier
-    private val localDataSource: CharacterDataSource,
-    @CharacterRemoteDataSourceQualifier
-    private val remoteDataSource: CharacterDataSource
+    @CharacterLocalDataSourceQualifier private val localDataSource: CharacterDataSource,
+    @CharacterRemoteDataSourceQualifier private val remoteDataSource: CharacterDataSource
 ) : CharacterRepository {
 
     private var mLastSearchTerm: String? = null
@@ -67,7 +65,7 @@ class DefaultCharacterRepository @Inject constructor(
             //save the new list in cache
             localDataSource.save(characterList)
 
-            Either.Right(((localDataSource.fetchCachedCharacterList()) as Either.Right).b)
+            Either.Right(((localDataSource.fetchCharacterList()) as Either.Right).b)
         }
     }
 
@@ -75,11 +73,18 @@ class DefaultCharacterRepository @Inject constructor(
         return localDataSource.fetchCharacterByUrl(cardId)
     }
 
-    override suspend fun fetchCachedCharacterList(): Either<Failure, List<Character>> {
-        return localDataSource.fetchCachedCharacterList()
+    override suspend fun fetchCharacterList(): Either<Failure, List<Character>> {
+        return localDataSource.fetchCharacterList()
     }
 
     private fun hasSearchTermChanged(searchTerm: String) =
         (mLastSearchTerm == null && searchTerm.isNotEmpty()) || mLastSearchTerm != searchTerm
 
+    override suspend fun fetchFilmListByCharacterUrl(url: String): Either<Failure, List<String>> {
+        return localDataSource.fetchFilmListByCharacterUrl(url)
+    }
+
+    override suspend fun fetchSpecieListByCharacterUrl(url: String): Either<Failure, List<String>> {
+        return localDataSource.fetchSpecieListByCharacterUrl(url)
+    }
 }

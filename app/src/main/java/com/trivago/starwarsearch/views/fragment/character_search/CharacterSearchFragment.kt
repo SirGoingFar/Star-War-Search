@@ -8,10 +8,9 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.safeboda.android_sirgoingfar.views.adapter.LinearLayoutManagerWrapper
 import com.trivago.starwarsearch.R
-import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
-import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.domain.dto.character_search.Character
 import com.trivago.starwarsearch.views.activity.character_search.CharacterSearchHostActivity
 import com.trivago.starwarsearch.views.adapter.character_search.CharacterRecyclerViewAdapter
 import com.trivago.starwarsearch.views.fragment.BaseInjectableFragment
@@ -23,7 +22,8 @@ import kotlinx.android.synthetic.main.fragment_character_list.*
 import javax.inject.Inject
 
 
-class CharacterSearchFragment : BaseInjectableFragment<CharacterSearchState, CharacterSearchAction>(),
+class CharacterSearchFragment :
+    BaseInjectableFragment<CharacterSearchState, CharacterSearchAction>(),
     SearchView.OnQueryTextListener, CharacterRecyclerViewAdapter.ICharacterClickListener {
 
     @Inject
@@ -43,7 +43,7 @@ class CharacterSearchFragment : BaseInjectableFragment<CharacterSearchState, Cha
             characterActivity = context
 
         //Inject fragment's dependencies
-        (characterActivity.application as StarWarSearchApplication).appComponent.inject(this)
+        characterActivity.appComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

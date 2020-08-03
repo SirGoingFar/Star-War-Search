@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.utils.observe
+import com.trivago.starwarsearch.di.component.AppComponent
 import com.trivago.starwarsearch.views.activity.BaseInjectableActivity
-import com.trivago.starwarsearch.views.activity.character_detail.CharacterDetailActivity
+import com.trivago.starwarsearch.views.activity.character_detail.CharacterDetailHostActivity
 import com.trivago.starwarsearch.views.fragment.character_detail.CharacterDetailFragment
 import com.trivago.starwarsearch.views.fragment.character_search.CharacterSearchFragment
 import com.trivago.starwarsearch.views.viewaction.character_search.CharacterSearchHostAction
@@ -19,8 +20,11 @@ class CharacterSearchHostActivity :
     @Inject
     lateinit var screenViewModel: CharacterSearchHostViewModel
 
+    lateinit var appComponent: AppComponent
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as StarWarSearchApplication).appComponent.inject(this)
+        appComponent = (application as StarWarSearchApplication).appComponent
+        appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
         //observe State Change
@@ -44,10 +48,10 @@ class CharacterSearchHostActivity :
                 startActivity(
                     Intent(
                         this,
-                        CharacterDetailActivity::class.java
+                        CharacterDetailHostActivity::class.java
                     ).apply {
                         putExtra(
-                            CharacterDetailActivity.EXTRA_CHARACTER_URL,
+                            CharacterDetailHostActivity.EXTRA_CHARACTER_URL,
                             viewAction.characterUrl
                         )
                     }

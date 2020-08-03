@@ -1,6 +1,6 @@
 package com.trivago.starwarsearch.views.viewaction.character_search
 
-import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.domain.dto.character_search.Character
 import com.trivago.starwarsearch.views.viewaction.BaseAction
 
 sealed class CharacterSearchAction :

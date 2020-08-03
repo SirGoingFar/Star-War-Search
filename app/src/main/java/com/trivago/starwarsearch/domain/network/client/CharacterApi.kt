@@ -1,6 +1,6 @@
 package com.trivago.starwarsearch.domain.network.client
 
-import com.trivago.starwarsearch.domain.dto.SearchCharacterResponse
+import com.trivago.starwarsearch.domain.dto.character_search.SearchCharacterResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

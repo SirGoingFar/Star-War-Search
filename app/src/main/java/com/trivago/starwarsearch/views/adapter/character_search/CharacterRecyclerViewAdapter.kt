@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.trivago.starwarsearch.R
-import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.domain.dto.character_search.Character
 import com.trivago.starwarsearch.views.adapter.BaseRecyclerViewAdapter
 import com.trivago.starwarsearch.views.util.CharacterDiffUtil
 

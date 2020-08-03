@@ -1,4 +1,4 @@
-package com.trivago.starwarsearch.di.annotation
+package com.trivago.starwarsearch.di.annotation.character
 
 import javax.inject.Qualifier
 
