@@ -1,7 +1,10 @@
 package com.trivago.starwarsearch.views.viewstate
 
-import com.trivago.starwarsearch.domain.dto.Character
-
 data class CharacterDetailState(
-    val character: Character? = null
+    val name: String? = null,
+    val birthYear: String? = null,
+    val height: String? = null,
+    val gender: String? = null,
+    val hasSpecies: Boolean = false,
+    val hasFilm: Boolean = false
 ) : BaseViewState

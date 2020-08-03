@@ -35,13 +35,51 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CharacterDetailItemLabel" parent="TextViewFont.Bold">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/content_margin</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing_extra</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+    </style>
+
+    <style name="CharacterDetailItemValue" parent="TextViewFont.Regular">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/content_margin</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing_extra</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+    </style>
+
+    <style name="SeeMoreLabel" parent="TextViewFont.Regular">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">@dimen/text_14sp</item>
+        <item name="android:layout_marginTop">@dimen/dimen_32dp</item>
+    </style>
+
+    <style name="ViewMoreButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/cardview_button_margin_top</item>
+        <item name="cardBackgroundColor">@color/colorPrimaryDark</item>
+        <item name="cardCornerRadius">@dimen/cardview_corner_radius</item>
+    </style>
+
+    <style name="ViewMoreButtonLabel" parent="TextViewFont.Bold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/content_margin</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <dimen name="dimen_32dp">32dp</dimen>
 </resources>

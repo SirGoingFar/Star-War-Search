@@ -2,26 +2,26 @@ package com.trivago.starwarsearch.views.activity
 
 import android.os.Bundle
 import com.trivago.starwarsearch.R
-import com.trivago.starwarsearch.views.fragment.CardDetailFragment
+import com.trivago.starwarsearch.views.fragment.CharacterDetailFragment
 
 class CharacterDetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_detail)
+        setContentView(R.layout.activity_character_detail)
 
-        val cardId: String? = intent.extras?.getString(EXTRA_CARD_ID)
+        val characterUrl: String? = intent.extras?.getString(EXTRA_CHARACTER_URL)
 
-        if (cardId.isNullOrEmpty()) {
+        if (characterUrl.isNullOrEmpty()) {
             finish()
             return
         }
 
         popAllFragments()
-        startFragment(CardDetailFragment.newInstance(cardId), true)
+        startFragmentOnMaster(CharacterDetailFragment.newInstance(characterUrl), true)
     }
 
     companion object {
-        const val EXTRA_CARD_ID = "extra_card_id"
+        const val EXTRA_CHARACTER_URL = "extra_character_url"
     }
 }

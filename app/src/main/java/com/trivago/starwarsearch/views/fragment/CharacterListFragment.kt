@@ -2,6 +2,7 @@ package com.trivago.starwarsearch.views.fragment
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -9,12 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.safeboda.android_sirgoingfar.views.adapter.LinearLayoutManagerWrapper
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.StarWarSearchApplication
+import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
 import com.trivago.starwarsearch.domain.dto.Character
-import com.trivago.starwarsearch.views.activity.CharacterActivity
+import com.trivago.starwarsearch.views.activity.CharacterSearchHostActivity
+import com.trivago.starwarsearch.views.activity.CharacterDetailActivity
 import com.trivago.starwarsearch.views.adapter.CharacterRecyclerViewAdapter
 import com.trivago.starwarsearch.views.util.addInfiniteScrollListener
-import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.views.viewaction.CharacterListAction
 import com.trivago.starwarsearch.views.viewmodel.CharacterListViewModel
 import com.trivago.starwarsearch.views.viewstate.CharacterListState
@@ -30,7 +32,7 @@ class CharacterListFragment : BaseInjectableFragment<CharacterListState, Charact
 
     private var mSearchView: SearchView? = null
 
-    private lateinit var characterActivity: CharacterActivity
+    private lateinit var characterActivity: CharacterSearchHostActivity
 
     private lateinit var mAdapter: CharacterRecyclerViewAdapter
 
@@ -38,7 +40,7 @@ class CharacterListFragment : BaseInjectableFragment<CharacterListState, Charact
         super.onAttach(context)
 
         //Get an instance of the parent activity
-        if (context is CharacterActivity)
+        if (context is CharacterSearchHostActivity)
             characterActivity = context
 
         //Inject fragment's dependencies
@@ -139,7 +141,7 @@ class CharacterListFragment : BaseInjectableFragment<CharacterListState, Charact
     }
 
     override fun onClick(character: Character) {
-
+        characterActivity.screenViewModel.onCharacterClicked(character.url)
     }
 
     companion object {
