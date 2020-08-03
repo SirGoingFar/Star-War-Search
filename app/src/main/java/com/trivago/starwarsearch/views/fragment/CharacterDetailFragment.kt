@@ -6,20 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.trivago.starwarsearch.R
+import com.trivago.starwarsearch.StarWarSearchApplication
+import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
 import com.trivago.starwarsearch.views.viewaction.CharacterDetailAction
 import com.trivago.starwarsearch.views.viewmodel.CharacterDetailViewModel
 import com.trivago.starwarsearch.views.viewstate.CharacterDetailState
+import kotlinx.android.synthetic.main.fragment_character_detail.*
 import javax.inject.Inject
 
-class CardDetailFragment : BaseInjectableFragment<CharacterDetailState, CharacterDetailAction>() {
+class CharacterDetailFragment :
+    BaseInjectableFragment<CharacterDetailState, CharacterDetailAction>() {
 
     @Inject
     lateinit var screenViewModel: CharacterDetailViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        (activity?.application as CardApplication).appComponent.inject(this)
+        (activity?.application as StarWarSearchApplication).appComponent.inject(this)
     }
 
     override fun onCreateView(
@@ -27,7 +31,7 @@ class CardDetailFragment : BaseInjectableFragment<CharacterDetailState, Characte
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_card_detail, container, false)
+        return inflater.inflate(R.layout.fragment_character_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,19 +43,25 @@ class CardDetailFragment : BaseInjectableFragment<CharacterDetailState, Characte
         //observe Action
         observe(screenViewModel.actionLiveData, actionObserver)
 
-        screenViewModel.onViewCreated(arguments!!.getString(EXTRA_CARD_ID))
+        screenViewModel.onViewCreated(arguments!!.getString(EXTRA_CHARACTER_URL))
     }
 
     override fun onStateChange(viewState: CharacterDetailState) {
-        viewState.character?.let {
+        with(viewState) {
+            tv_name_value.text = name
+            tv_gender_value.text = gender
+            tv_height_value.text = height
+            tv_birth_year_value.text = birthYear
+            btn_see_films.show(hasFilm)
+            btn_see_species.show(hasSpecies)
         }
     }
 
     companion object {
-        const val EXTRA_CARD_ID = "extra_card_id"
-        fun newInstance(cardId: String) = CardDetailFragment().apply {
+        const val EXTRA_CHARACTER_URL = "extra_character_url"
+        fun newInstance(characterUrl: String) = CharacterDetailFragment().apply {
             arguments = Bundle().apply {
-                putString(EXTRA_CARD_ID, cardId)
+                putString(EXTRA_CHARACTER_URL, characterUrl)
             }
         }
     }

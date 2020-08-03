@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-class SharedCardViewModel(application: Application) : AndroidViewModel(application) {
+class SharedCharacterViewModel(application: Application) : AndroidViewModel(application) {
 
     private val selectedCardMutableLiveData: MutableLiveData<String> = MutableLiveData()
     val selectedCardLiveData: LiveData<String> = selectedCardMutableLiveData

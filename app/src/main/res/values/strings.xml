@@ -15,4 +15,12 @@
     <string name="select_character_from_the_left_pane">Select a character from the left pane</string>
     <string name="sample_character_name">Character Name</string>
     <string name="sample_character_gender">Character Gender</string>
+    <string name="text_name">Name</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_birth_year">Birth Year</string>
+    <string name="text_height">Height</string>
+    <string name="text_see_more">See more</string>
+    <string name="text_species">Species</string>
+    <string name="text_films">Films</string>
+    <string name="text_character_detail">Character Detail</string>
 </resources>

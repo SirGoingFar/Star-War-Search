@@ -16,13 +16,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.activity.CharacterActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".views.activity.CharacterDetailActivity"
+            android:label="@string/text_character_detail"
+            android:parentActivityName=".views.activity.CharacterActivity" />
     </application>
 
 </manifest>
