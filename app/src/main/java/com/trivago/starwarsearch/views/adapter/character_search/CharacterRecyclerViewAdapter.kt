@@ -1,4 +1,4 @@
-package com.trivago.starwarsearch.views.adapter
+package com.trivago.starwarsearch.views.adapter.character_search
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.domain.dto.Character
+import com.trivago.starwarsearch.views.adapter.BaseRecyclerViewAdapter
 import com.trivago.starwarsearch.views.util.CharacterDiffUtil
 
 class CharacterRecyclerViewAdapter(private val clickListener: ICharacterClickListener) :

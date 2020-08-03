@@ -1,4 +1,6 @@
-package com.trivago.starwarsearch.views.viewstate
+package com.trivago.starwarsearch.views.viewstate.character_detail
+
+import com.trivago.starwarsearch.views.viewstate.BaseViewState
 
 data class CharacterDetailState(
     val name: String? = null,

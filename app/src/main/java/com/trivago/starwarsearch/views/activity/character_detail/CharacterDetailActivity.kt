@@ -1,8 +1,9 @@
-package com.trivago.starwarsearch.views.activity
+package com.trivago.starwarsearch.views.activity.character_detail
 
 import android.os.Bundle
 import com.trivago.starwarsearch.R
-import com.trivago.starwarsearch.views.fragment.CharacterDetailFragment
+import com.trivago.starwarsearch.views.activity.BaseActivity
+import com.trivago.starwarsearch.views.fragment.character_detail.CharacterDetailFragment
 
 class CharacterDetailActivity : BaseActivity() {
 

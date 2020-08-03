@@ -1,6 +1,9 @@
-package com.trivago.starwarsearch.views.viewaction
+package com.trivago.starwarsearch.views.viewaction.character_detail
 
-sealed class CharacterDetailAction : BaseAction {
+import com.trivago.starwarsearch.views.viewaction.BaseAction
+
+sealed class CharacterDetailAction :
+    BaseAction {
     class SetCharacterDetail(
         val name: String? = null,
         val birthYear: String? = null,

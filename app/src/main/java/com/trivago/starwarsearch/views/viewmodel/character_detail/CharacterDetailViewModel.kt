@@ -1,15 +1,18 @@
-package com.trivago.starwarsearch.views.viewmodel
+package com.trivago.starwarsearch.views.viewmodel.character_detail
 
 import com.trivago.starwarsearch.core.extension.getValueAt
 import com.trivago.starwarsearch.domain.usecase.FetchCharacterByUrl
 import com.trivago.starwarsearch.views.util.formatHeight
-import com.trivago.starwarsearch.views.viewaction.CharacterDetailAction
-import com.trivago.starwarsearch.views.viewstate.CharacterDetailState
+import com.trivago.starwarsearch.views.viewaction.character_detail.CharacterDetailAction
+import com.trivago.starwarsearch.views.viewmodel.BaseViewModel
+import com.trivago.starwarsearch.views.viewstate.character_detail.CharacterDetailState
 import javax.inject.Inject
 
 class CharacterDetailViewModel @Inject constructor(
     private val fetchCharacterByUrl: FetchCharacterByUrl
-) : BaseViewModel<CharacterDetailState, CharacterDetailAction>(CharacterDetailState()) {
+) : BaseViewModel<CharacterDetailState, CharacterDetailAction>(
+    CharacterDetailState()
+) {
 
     override fun onLoadData(vararg input: Any?) {
         fetchCharacterWithUrl(input.getValueAt(0) as String)
