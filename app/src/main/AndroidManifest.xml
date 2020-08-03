@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.activity.CharacterActivity"
+            android:name=".views.activity.CharacterSearchHostActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
         <activity
             android:name=".views.activity.CharacterDetailActivity"
             android:label="@string/text_character_detail"
-            android:parentActivityName=".views.activity.CharacterActivity" />
+            android:parentActivityName=".views.activity.CharacterSearchHostActivity" />
     </application>
 
 </manifest>

@@ -2,7 +2,6 @@ package com.trivago.starwarsearch.views.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -17,7 +16,8 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    private lateinit var currentFragment: Fragment
+    private lateinit var currentFragmentOnMaster: Fragment
+    private lateinit var currentFragmentOnDetail: Fragment
 
     override fun attachBaseContext(newBase: Context?) {
         //For: Calligraphy
@@ -29,21 +29,21 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_base)
     }
 
-    open fun startFragment(fragment: Fragment?, addToBackStack: Boolean) {
-        startFragment(fragment, addToBackStack, false)
+    open fun startFragmentOnMaster(fragment: Fragment?, addToBackStack: Boolean) {
+        startFragmentOnMaster(fragment, addToBackStack, false)
     }
 
-    open fun startFragment(
+    open fun startFragmentOnMaster(
         fragment: Fragment?,
         addToBackStack: Boolean,
         allowStateLoss: Boolean
     ) {
         if (fragment != null) {
 
-            if (::currentFragment.isInitialized && currentFragment == fragment)
+            if (::currentFragmentOnMaster.isInitialized && currentFragmentOnMaster == fragment)
                 return
 
-            currentFragment = fragment
+            currentFragmentOnMaster = fragment
 
             val fragmentName = fragment.javaClass.simpleName
             val fManager: FragmentManager = supportFragmentManager
@@ -52,7 +52,46 @@ abstract class BaseActivity : AppCompatActivity() {
 
                 val ft: FragmentTransaction = fManager.beginTransaction()
 
-                ft.replace(R.id.container, fragment, fragmentName)
+                ft.replace(R.id.container_master, fragment, fragmentName)
+
+                if (addToBackStack) {
+                    ft.addToBackStack(fragmentName)
+                }
+
+                if (allowStateLoss) {
+                    ft.commitAllowingStateLoss()
+                } else {
+                    ft.commit()
+                }
+
+            }
+        }
+    }
+
+    open fun startFragmentOnDetail(fragment: Fragment?, addToBackStack: Boolean) {
+        startFragmentOnDetail(fragment, addToBackStack, false)
+    }
+
+    open fun startFragmentOnDetail(
+        fragment: Fragment?,
+        addToBackStack: Boolean,
+        allowStateLoss: Boolean
+    ) {
+        if (fragment != null) {
+
+            if (::currentFragmentOnDetail.isInitialized && currentFragmentOnDetail == fragment)
+                return
+
+            currentFragmentOnDetail = fragment
+
+            val fragmentName = fragment.javaClass.simpleName
+            val fManager: FragmentManager = supportFragmentManager
+
+            if (!fManager.isStateSaved) {
+
+                val ft: FragmentTransaction = fManager.beginTransaction()
+
+                ft.replace(R.id.container_detail, fragment, fragmentName)
 
                 if (addToBackStack) {
                     ft.addToBackStack(fragmentName)
@@ -78,6 +117,8 @@ abstract class BaseActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    open fun isDetailViewAvailable() = findViewById<View>(R.id.container_detail) != null
 
     open fun popAllFragments() {
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)

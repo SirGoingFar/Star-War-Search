@@ -28,7 +28,7 @@ abstract class BaseFragment : Fragment() {
         addToBackStack: Boolean,
         allowStateLoss: Boolean
     ) {
-        baseActivity?.startFragment(fragment, addToBackStack, allowStateLoss)
+        baseActivity?.startFragmentOnMaster(fragment, addToBackStack, allowStateLoss)
     }
 
     open fun closeFragment() {

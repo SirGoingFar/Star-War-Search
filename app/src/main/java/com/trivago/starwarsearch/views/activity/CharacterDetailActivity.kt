@@ -18,7 +18,7 @@ class CharacterDetailActivity : BaseActivity() {
         }
 
         popAllFragments()
-        startFragment(CharacterDetailFragment.newInstance(characterUrl), true)
+        startFragmentOnMaster(CharacterDetailFragment.newInstance(characterUrl), true)
     }
 
     companion object {
