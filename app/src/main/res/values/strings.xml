@@ -19,7 +19,7 @@
     <string name="text_gender">Gender</string>
     <string name="text_birth_year">Birth Year</string>
     <string name="text_height">Height</string>
-    <string name="text_see_more">See more</string>
+    <string name="text_see_more">See more about %s:</string>
     <string name="text_species">Species</string>
     <string name="text_films">Films</string>
     <string name="text_character_detail">Character Detail</string>

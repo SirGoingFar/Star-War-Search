@@ -25,6 +25,7 @@ class CharacterDetailViewModel @Inject constructor(
                 name = action.name,
                 birthYear = action.birthYear,
                 gender = action.gender,
+                seeMoreText = action.seeMoreText,
                 height = action.height,
                 hasFilm = action.hasFilm,
                 hasSpecies = action.hasSpecies
@@ -43,6 +44,7 @@ class CharacterDetailViewModel @Inject constructor(
                             birthYear = it.birthYear,
                             gender = it.gender.capitalize(),
                             height = formatHeight(it.height),
+                            seeMoreText = "See more about ${it.name}:",
                             hasFilm = it.films.isNotEmpty(),
                             hasSpecies = it.species.isNotEmpty()
                         )

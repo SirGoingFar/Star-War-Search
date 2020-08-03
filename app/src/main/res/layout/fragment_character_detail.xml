@@ -148,6 +148,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/tv_see_more_label"
             style="@style/SeeMoreLabel"
             android:text="@string/text_see_more" />
 
