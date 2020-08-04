@@ -168,7 +168,7 @@
 
             <TextView
                 style="@style/ViewMoreButtonLabel"
-                android:text="@string/text_films_participated_in" />
+                android:text="@string/text_movies_appeared_in" />
 
         </androidx.cardview.widget.CardView>
 

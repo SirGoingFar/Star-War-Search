@@ -21,11 +21,11 @@
             android:name=".views.activity.species.SpeciesHostActivity"
             android:label="@string/text_species" />
         <activity
-            android:name=".views.activity.film.FilmDetailHostActivity"
-            android:label="@string/text_film_detail" />
+            android:name=".views.activity.movie.MovieDetailHostActivity"
+            android:label="@string/text_movie_detail" />
         <activity
-            android:name=".views.activity.film.FilmHostActivity"
-            android:label="@string/text_film" />
+            android:name=".views.activity.movie.MovieHostActivity"
+            android:label="@string/text_movies" />
         <activity
             android:name=".views.activity.character_search.CharacterSearchHostActivity"
             android:theme="@style/AppTheme.NoActionBar">

@@ -10,7 +10,7 @@ import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
-import com.trivago.starwarsearch.views.activity.film.FilmHostActivity
+import com.trivago.starwarsearch.views.activity.movie.MovieHostActivity
 import com.trivago.starwarsearch.views.activity.species.SpeciesHostActivity
 import com.trivago.starwarsearch.views.fragment.BaseInjectableFragment
 import com.trivago.starwarsearch.views.viewaction.character_detail.CharacterDetailAction
@@ -75,9 +75,9 @@ class CharacterDetailFragment :
                 startActivity(
                     Intent(
                         context,
-                        FilmHostActivity::class.java
+                        MovieHostActivity::class.java
                     ).apply {
-                        putExtra(FilmHostActivity.EXTRA_CHARACTER_URL, url)
+                        putExtra(MovieHostActivity.EXTRA_CHARACTER_URL, url)
                     }
                 )
             }

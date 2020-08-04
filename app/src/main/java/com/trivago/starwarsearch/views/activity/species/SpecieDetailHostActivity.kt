@@ -3,7 +3,6 @@ package com.trivago.starwarsearch.views.activity.species
 import android.os.Bundle
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.views.activity.BaseActivity
-import com.trivago.starwarsearch.views.fragment.film.FilmDetailFragment
 import com.trivago.starwarsearch.views.fragment.species.SpecieDetailFragment
 
 class SpecieDetailHostActivity : BaseActivity() {
