@@ -2,16 +2,16 @@ package com.trivago.starwarsearch.di.module
 
 import com.trivago.starwarsearch.di.annotation.character.CharacterLocalDataSourceQualifier
 import com.trivago.starwarsearch.di.annotation.character.CharacterRemoteDataSourceQualifier
-import com.trivago.starwarsearch.di.annotation.film.FilmLocalDataSourceQualifier
-import com.trivago.starwarsearch.di.annotation.film.FilmRemoteDataSourceQualifier
+import com.trivago.starwarsearch.di.annotation.movie.MovieLocalDataSourceQualifier
+import com.trivago.starwarsearch.di.annotation.movie.MovieRemoteDataSourceQualifier
 import com.trivago.starwarsearch.di.annotation.specie.SpecieLocalDataSourceQualifier
 import com.trivago.starwarsearch.di.annotation.specie.SpecieRemoteDataSourceQualifier
 import com.trivago.starwarsearch.domain.datasource.character.CharacterDataSource
 import com.trivago.starwarsearch.domain.datasource.character.CharacterLocalSource
 import com.trivago.starwarsearch.domain.datasource.character.CharacterRemoteSource
-import com.trivago.starwarsearch.domain.datasource.film.FilmDataSource
-import com.trivago.starwarsearch.domain.datasource.film.FilmLocalSource
-import com.trivago.starwarsearch.domain.datasource.film.FilmRemoteSource
+import com.trivago.starwarsearch.domain.datasource.movie.MovieDataSource
+import com.trivago.starwarsearch.domain.datasource.movie.MovieLocalSource
+import com.trivago.starwarsearch.domain.datasource.movie.MovieRemoteSource
 import com.trivago.starwarsearch.domain.datasource.specie.SpecieDataSource
 import com.trivago.starwarsearch.domain.datasource.specie.SpecieLocalSource
 import com.trivago.starwarsearch.domain.datasource.specie.SpecieRemoteSource
@@ -32,13 +32,13 @@ object DataSourceModule {
     fun provideCharacterRemoteDataSource(remoteDataSource: CharacterRemoteSource): CharacterDataSource =
         remoteDataSource
 
-    @FilmLocalDataSourceQualifier
+    @MovieLocalDataSourceQualifier
     @Provides
-    fun provideFilmLocalDataSource(localSource: FilmLocalSource): FilmDataSource = localSource
+    fun provideMovieLocalDataSource(localSource: MovieLocalSource): MovieDataSource = localSource
 
-    @FilmRemoteDataSourceQualifier
+    @MovieRemoteDataSourceQualifier
     @Provides
-    fun provideFilmRemoteDataSource(remoteSource: FilmRemoteSource): FilmDataSource = remoteSource
+    fun provideMovieRemoteDataSource(remoteSource: MovieRemoteSource): MovieDataSource = remoteSource
 
     @SpecieLocalDataSourceQualifier
     @Provides

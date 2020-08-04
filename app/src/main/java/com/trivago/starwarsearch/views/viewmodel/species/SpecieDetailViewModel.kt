@@ -30,8 +30,9 @@ class SpecieDetailViewModel @Inject constructor(
                 showLoader = false,
                 specie = action.specie
             )
-            is SpecieDetailAction.UpdatePlanetPopulation -> state.copy(
+            is SpecieDetailAction.UpdatePlanetDetail -> state.copy(
                 specie = state.specie!!.copy(
+                    homeWorldName = action.name,
                     population = action.population
                 )
             )
@@ -48,7 +49,7 @@ class SpecieDetailViewModel @Inject constructor(
                         performAction(SpecieDetailAction.SpecieDetailFetchUnsuccessful("Unable to fetch specie detail"))
                     },
                     {
-                        if (it.population.isNullOrEmpty())
+                        if (it.population.isNullOrEmpty() || it.homeWorldName.isNullOrEmpty())
                             fetchPlanetDetail(url, it.homeWorld)
                         emit(SpecieDetailAction.UpdateSpecielDetail(it))
                     }
@@ -63,7 +64,7 @@ class SpecieDetailViewModel @Inject constructor(
             job = {
                 fetchPlanetDetailByUrl.execute(listOf(specielUrl, homeWorldUrl)).fold({},
                     {
-                        emit(SpecieDetailAction.UpdatePlanetPopulation(it.population))
+                        emit(SpecieDetailAction.UpdatePlanetDetail(it.population, it.name))
                     }
                 )
             }

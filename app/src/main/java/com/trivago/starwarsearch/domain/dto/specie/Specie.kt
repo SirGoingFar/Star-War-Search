@@ -7,5 +7,6 @@ data class Specie(
     val language: String,
     @SerializedName("homeworld")
     val homeWorld: String,
+    var homeWorldName:String?,
     var population: String?
 )

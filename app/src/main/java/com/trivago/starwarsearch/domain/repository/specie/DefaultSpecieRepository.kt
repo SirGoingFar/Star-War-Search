@@ -47,7 +47,7 @@ class DefaultSpecieRepository @Inject constructor(
 
         val planet = (planetResp as Either.Right).b
 
-        specie = specie.copy(population = planet.population)
+        specie = specie.copy(population = planet.population, homeWorldName = planet.name)
 
         //save updated specie in a light cache
         localSource.save(url, specie)
@@ -69,7 +69,7 @@ class DefaultSpecieRepository @Inject constructor(
 
             if (specieResp.isRight) {
                 var specie = (specieResp as Either.Right).b
-                specie = specie.copy(population = planet.population)
+                specie = specie.copy(homeWorldName = planet.name, population = planet.population)
                 //overwrite specie in light cache
                 localSource.save(specieUrl, specie)
             }

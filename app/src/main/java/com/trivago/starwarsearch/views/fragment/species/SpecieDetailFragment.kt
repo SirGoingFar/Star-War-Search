@@ -54,6 +54,8 @@ class SpecieDetailFragment : BaseInjectableFragment<SpecieDetailState, SpecieDet
             specie?.let {
                 tv_name_value.text = it.name
                 tv_language_value.text = it.language
+                tv_homeworld_name_value.text =
+                    if (it.homeWorldName.isNullOrEmpty()) "-" else it.homeWorldName
                 tv_homeworld_population_value.text =
                     if (it.population.isNullOrEmpty()) "-" else it.population
             }
@@ -61,7 +63,7 @@ class SpecieDetailFragment : BaseInjectableFragment<SpecieDetailState, SpecieDet
     }
 
     override fun onPerformAction(viewAction: SpecieDetailAction) {
-        if(viewAction is SpecieDetailAction.SpecieDetailFetchUnsuccessful){
+        if (viewAction is SpecieDetailAction.SpecieDetailFetchUnsuccessful) {
             toast(viewAction.msg)
             pbr_loader.show(false)
         }
