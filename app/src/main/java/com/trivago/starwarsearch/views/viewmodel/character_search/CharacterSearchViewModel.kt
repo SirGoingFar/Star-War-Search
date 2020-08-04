@@ -5,7 +5,7 @@ import com.trivago.starwarsearch.core.exception.Failure
 import com.trivago.starwarsearch.core.exception.NetworkFailure
 import com.trivago.starwarsearch.core.extension.cancelIfActive
 import com.trivago.starwarsearch.core.interactor.UseCase
-import com.trivago.starwarsearch.di.annotation.CharacterSearchScope
+import com.trivago.starwarsearch.di.annotation.SearchScope
 import com.trivago.starwarsearch.domain.dto.character_search.Character
 import com.trivago.starwarsearch.domain.usecase.character_search.FetchCachedCharacterList
 import com.trivago.starwarsearch.domain.usecase.character_search.SearchCharacter
@@ -17,7 +17,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
 import javax.inject.Inject
 
-@CharacterSearchScope
+@SearchScope
 class CharacterSearchViewModel @Inject constructor(
     private val searchCharacter: SearchCharacter,
     private val fetchCachedCharacterList: FetchCachedCharacterList

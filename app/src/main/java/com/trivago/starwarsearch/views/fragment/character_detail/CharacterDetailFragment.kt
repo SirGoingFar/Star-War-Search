@@ -11,6 +11,7 @@ import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
 import com.trivago.starwarsearch.views.activity.film.FilmHostActivity
+import com.trivago.starwarsearch.views.activity.species.SpeciesHostActivity
 import com.trivago.starwarsearch.views.fragment.BaseInjectableFragment
 import com.trivago.starwarsearch.views.viewaction.character_detail.CharacterDetailAction
 import com.trivago.starwarsearch.views.viewmodel.character_detail.CharacterDetailViewModel
@@ -59,7 +60,16 @@ class CharacterDetailFragment :
             btn_see_films.show(hasFilm)
             btn_see_species.show(hasSpecies)
 
-            btn_see_species.setOnClickListener { }
+            btn_see_species.setOnClickListener {
+                startActivity(
+                    Intent(
+                        context,
+                        SpeciesHostActivity::class.java
+                    ).apply {
+                        putExtra(SpeciesHostActivity.EXTRA_CHARACTER_URL, url)
+                    }
+                )
+            }
 
             btn_see_films.setOnClickListener {
                 startActivity(

@@ -9,7 +9,7 @@ class CharacterDetailHostActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_character_detail)
+        setContentView(R.layout.activity_detail)
 
         val characterUrl: String? = intent.extras?.getString(EXTRA_CHARACTER_URL)
 

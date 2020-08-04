@@ -60,7 +60,7 @@ class FilmDetailFragment : BaseInjectableFragment<FilmDetailState, FilmDetailAct
     override fun onPerformAction(viewAction: FilmDetailAction) {
         if (viewAction is FilmDetailAction.FilmDetailLoadError) {
             toast(viewAction.msg)
-            activity?.finish()
+            pb_loader.show(false)
         }
     }
 

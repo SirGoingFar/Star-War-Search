@@ -1,4 +1,4 @@
-package com.trivago.starwarsearch.views.fragment.film
+package com.trivago.starwarsearch.views.fragment.species
 
 import android.content.Context
 import android.os.Bundle
@@ -8,29 +8,29 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.core.utils.observe
-import com.trivago.starwarsearch.views.activity.film.FilmHostActivity
+import com.trivago.starwarsearch.views.activity.species.SpeciesHostActivity
 import com.trivago.starwarsearch.views.adapter.common.ListItemAdapter
 import com.trivago.starwarsearch.views.fragment.BaseInjectableFragment
-import com.trivago.starwarsearch.views.viewaction.film.FilmListViewAction
-import com.trivago.starwarsearch.views.viewmodel.film.FilmListViewModel
-import com.trivago.starwarsearch.views.viewstate.film.FilmListState
+import com.trivago.starwarsearch.views.viewaction.species.SpeciesListAction
+import com.trivago.starwarsearch.views.viewmodel.species.SpeciesListViewModel
+import com.trivago.starwarsearch.views.viewstate.species.SpeciesListState
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class FilmListFragment : BaseInjectableFragment<FilmListState, FilmListViewAction>(),
+class SpeciesListFragment : BaseInjectableFragment<SpeciesListState, SpeciesListAction>(),
     ListItemAdapter.IItemClickListener {
 
     @Inject
-    lateinit var screenViewModel: FilmListViewModel
+    lateinit var screenViewModel: SpeciesListViewModel
 
-    private lateinit var filmHostActivity: FilmHostActivity
+    private lateinit var speciesHostActivity: SpeciesHostActivity
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is FilmHostActivity)
-            filmHostActivity = context
+        if (context is SpeciesHostActivity)
+            speciesHostActivity = context
 
-        filmHostActivity.appComponent.inject(this)
+        speciesHostActivity.appComponent.inject(this)
     }
 
     override fun onCreateView(
@@ -53,22 +53,22 @@ class FilmListFragment : BaseInjectableFragment<FilmListState, FilmListViewActio
         screenViewModel.onViewCreated(arguments!!.getString(ARG_CHARACTER_URL))
     }
 
-    override fun onStateChange(viewState: FilmListState) {
+    override fun onStateChange(viewState: SpeciesListState) {
         with(viewState) {
             rv_items.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             rv_items.setHasFixedSize(true)
-            rv_items.adapter = ListItemAdapter(list, this@FilmListFragment)
+            rv_items.adapter = ListItemAdapter(list, this@SpeciesListFragment)
         }
     }
 
     override fun onClick(url: String) {
-        filmHostActivity.screenViewModel.onFilmClicked(url)
+        speciesHostActivity.screenViewModel.onSpecieClicked(url)
     }
 
     companion object {
         private const val ARG_CHARACTER_URL = "arg_character_url"
-        fun newInstance(characterUrl: String) = FilmListFragment().apply {
+        fun newInstance(characterUrl: String) = SpeciesListFragment().apply {
             arguments = Bundle().apply {
                 putString(ARG_CHARACTER_URL, characterUrl)
             }

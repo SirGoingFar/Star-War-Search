@@ -29,4 +29,7 @@
     <string name="text_title">Title</string>
     <string name="text_value">Value</string>
     <string name="text_opening_crawl">Opening Crawl</string>
+    <string name="text_specie_detail">Specie Detail</string>
+    <string name="text_language">Language</string>
+    <string name="text_homeworld_population">Home World Population</string>
 </resources>
