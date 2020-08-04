@@ -158,7 +158,7 @@
 
             <TextView
                 style="@style/ViewMoreButtonLabel"
-                android:text="@string/text_species" />
+                android:text="@string/text_specie_s_belonged_to" />
 
         </androidx.cardview.widget.CardView>
 
@@ -168,7 +168,7 @@
 
             <TextView
                 style="@style/ViewMoreButtonLabel"
-                android:text="@string/text_films" />
+                android:text="@string/text_films_participated_in" />
 
         </androidx.cardview.widget.CardView>
 

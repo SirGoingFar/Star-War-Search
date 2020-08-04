@@ -32,4 +32,6 @@
     <string name="text_specie_detail">Specie Detail</string>
     <string name="text_language">Language</string>
     <string name="text_homeworld_population">Home World Population</string>
+    <string name="text_films_participated_in">Film(s) participated in</string>
+    <string name="text_specie_s_belonged_to">Specie(s) belonged to</string>
 </resources>
