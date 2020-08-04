@@ -15,11 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.activity.species.SpecieDetailHostActivity"
+            android:label="@string/text_specie_detail" />
+        <activity
+            android:name=".views.activity.species.SpeciesHostActivity"
+            android:label="@string/text_species" />
+        <activity
             android:name=".views.activity.film.FilmDetailHostActivity"
-            android:label="@string/text_film_detail"/>
+            android:label="@string/text_film_detail" />
         <activity
             android:name=".views.activity.film.FilmHostActivity"
-            android:label="@string/text_film"/>
+            android:label="@string/text_film" />
         <activity
             android:name=".views.activity.character_search.CharacterSearchHostActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -31,7 +37,7 @@
         </activity>
         <activity
             android:name=".views.activity.character_detail.CharacterDetailHostActivity"
-            android:label="@string/text_character_detail"/>
+            android:label="@string/text_character_detail" />
     </application>
 
 </manifest>

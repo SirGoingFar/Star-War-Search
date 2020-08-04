@@ -1,11 +1,11 @@
-package com.trivago.starwarsearch.domain.dto.film
+package com.trivago.starwarsearch.domain.repository.film
 
 import com.trivago.starwarsearch.core.exception.Failure
 import com.trivago.starwarsearch.core.functional.Either
 import com.trivago.starwarsearch.di.annotation.film.FilmLocalDataSourceQualifier
 import com.trivago.starwarsearch.di.annotation.film.FilmRemoteDataSourceQualifier
 import com.trivago.starwarsearch.domain.datasource.film.FilmDataSource
-import com.trivago.starwarsearch.domain.repository.film.FilmRepository
+import com.trivago.starwarsearch.domain.dto.film.Film
 import javax.inject.Inject
 
 class DefaultFilmRepository @Inject constructor(

@@ -1,30 +1,31 @@
-package com.trivago.starwarsearch.views.activity.film
+package com.trivago.starwarsearch.views.activity.species
 
 import android.os.Bundle
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.views.activity.BaseActivity
 import com.trivago.starwarsearch.views.fragment.film.FilmDetailFragment
+import com.trivago.starwarsearch.views.fragment.species.SpecieDetailFragment
 
-class FilmDetailHostActivity : BaseActivity() {
+class SpecieDetailHostActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val filmUrl: String? = intent.extras?.getString(EXTRA_FILM_URL)
+        val specieUrl: String? = intent.extras?.getString(EXTRA_SPECIE_URL)
 
-        if (filmUrl.isNullOrEmpty()) {
+        if (specieUrl.isNullOrEmpty()) {
             finish()
             return
         }
 
         popAllFragments()
-        startFragmentOnMaster(FilmDetailFragment.newInstance(filmUrl), true)
+        startFragmentOnMaster(SpecieDetailFragment.newInstance(specieUrl), true)
 
     }
 
     companion object {
-        const val EXTRA_FILM_URL = "extra_film_url"
+        const val EXTRA_SPECIE_URL = "extra_specie_url"
     }
 
 }
