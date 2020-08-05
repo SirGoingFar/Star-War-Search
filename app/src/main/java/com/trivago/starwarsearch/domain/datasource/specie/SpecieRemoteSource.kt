@@ -13,7 +13,7 @@ class SpecieRemoteSource @Inject constructor(
 ) : BaseRemoteSource(), SpecieDataSource {
 
     override suspend fun fetchSpecieListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
     override suspend fun fetchSpecieDetailBySpecieUrl(url: String): Either<Failure, Specie> {
@@ -25,11 +25,7 @@ class SpecieRemoteSource @Inject constructor(
     }
 
     override suspend fun save(url: String, specie: Specie) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun findSpecieByUrl(url: String): Either<Failure, Specie> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
 }

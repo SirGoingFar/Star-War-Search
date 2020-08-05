@@ -12,7 +12,7 @@ class MovieRemoteSource @Inject constructor(
 ) : BaseRemoteSource(), MovieDataSource {
 
     override suspend fun fetchMovieListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
     override suspend fun fetchMovieDetailByMovieUrl(url: String): Either<Failure, Movie> {
@@ -20,6 +20,6 @@ class MovieRemoteSource @Inject constructor(
     }
 
     override suspend fun save(url: String, film: Movie) {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 }

@@ -23,11 +23,11 @@ class CharacterRemoteSource @Inject constructor(
     }
 
     override suspend fun fetchFilmListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
     override suspend fun fetchSpecieListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
     override suspend fun fetchCharacterByUrl(url: String): Either<Failure, Character> {
