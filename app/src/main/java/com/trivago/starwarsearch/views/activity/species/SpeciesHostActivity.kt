@@ -2,6 +2,7 @@ package com.trivago.starwarsearch.views.activity.species
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.core.utils.observe
 import com.trivago.starwarsearch.di.component.AppComponent
@@ -24,6 +25,7 @@ class SpeciesHostActivity : BaseInjectableActivity<SpeciesHostState, SpeciesHost
         appComponent = (application as StarWarSearchApplication).appComponent
         appComponent.inject(this)
         super.onCreate(savedInstanceState)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
@@ -36,6 +38,15 @@ class SpeciesHostActivity : BaseInjectableActivity<SpeciesHostState, SpeciesHost
             SpeciesListFragment.newInstance(intent.getStringExtra(EXTRA_CHARACTER_URL)!!),
             true
         )
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onPerformAction(viewAction: SpeciesHostAction) {
