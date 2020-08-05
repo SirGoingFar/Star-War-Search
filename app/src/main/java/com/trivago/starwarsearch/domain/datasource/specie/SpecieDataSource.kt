@@ -15,6 +15,4 @@ interface SpecieDataSource {
 
     suspend fun save(url: String, specie: Specie)
 
-    suspend fun findSpecieByUrl(url: String): Either<Failure, Specie>
-
 }

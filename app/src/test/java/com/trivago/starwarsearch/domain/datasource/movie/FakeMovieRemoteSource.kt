@@ -1,25 +1,23 @@
 package com.trivago.starwarsearch.domain.datasource.movie
 
 import com.trivago.starwarsearch.core.exception.Failure
+import com.trivago.starwarsearch.core.exception.ItemNotFoundException
 import com.trivago.starwarsearch.core.functional.Either
 import com.trivago.starwarsearch.domain.dto.film.Movie
-import com.trivago.starwarsearch.domain.network.client.AppNetworkService
-import com.trivago.starwarsearch.network.source.BaseRemoteSource
-import javax.inject.Inject
 
-class MovieRemoteSource @Inject constructor(
-    private val networkService: AppNetworkService
-) : BaseRemoteSource(), MovieDataSource {
-
+class FakeMovieRemoteSource(private val movie: Movie) : MovieDataSource {
     override suspend fun fetchMovieListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not necessary for remote data source")
+        TODO("Not yet implemented")
     }
 
     override suspend fun fetchMovieDetailByMovieUrl(url: String): Either<Failure, Movie> {
-        return request { networkService.getMovieApi().fetchFilmDetail(url) }
+        return if (url.isEmpty())
+            Either.Left(ItemNotFoundException)
+        else
+            Either.Right(movie)
     }
 
     override suspend fun save(url: String, film: Movie) {
-        TODO("Not necessary for remote data source")
+        TODO("Not yet implemented")
     }
 }

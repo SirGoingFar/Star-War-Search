@@ -4,7 +4,8 @@ import com.trivago.starwarsearch.core.exception.Failure
 import com.trivago.starwarsearch.core.functional.Either
 import com.trivago.starwarsearch.domain.dto.character_search.Character
 import com.trivago.starwarsearch.domain.dto.character_search.SearchCharacterResponse
-import com.trivago.starwarsearch.domain.network.AppNetworkService
+import com.trivago.starwarsearch.domain.network.DefaultAppNetworkService
+import com.trivago.starwarsearch.domain.network.client.AppNetworkService
 import com.trivago.starwarsearch.network.source.BaseRemoteSource
 import javax.inject.Inject
 
@@ -18,16 +19,16 @@ class CharacterRemoteSource @Inject constructor(
         page: Int
     ): Either<Failure, SearchCharacterResponse> {
         return request {
-            networkService.characterApi.searchCharacter(term, page)
+            networkService.getCharacterApi().searchCharacter(term, page)
         }
     }
 
     override suspend fun fetchFilmListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
     override suspend fun fetchSpecieListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        TODO("Not yet implemented")
+        TODO("Not necessary for remote data source")
     }
 
     override suspend fun fetchCharacterByUrl(url: String): Either<Failure, Character> {

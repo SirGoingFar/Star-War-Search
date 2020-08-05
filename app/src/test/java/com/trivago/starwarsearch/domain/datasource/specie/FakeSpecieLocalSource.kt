@@ -5,17 +5,18 @@ import com.trivago.starwarsearch.core.exception.ItemNotFoundException
 import com.trivago.starwarsearch.core.functional.Either
 import com.trivago.starwarsearch.domain.dto.specie.Planet
 import com.trivago.starwarsearch.domain.dto.specie.Specie
-import com.trivago.starwarsearch.domain.repository.character.CharacterRepository
-import javax.inject.Inject
 
-class SpecieLocalSource @Inject constructor(
-    private val characterRepository: CharacterRepository
+class FakeSpecieLocalSource(
+    private val specieUrlList: List<String>
 ) : SpecieDataSource {
 
     private val specieHashMap: HashMap<String, Specie> = HashMap()
 
     override suspend fun fetchSpecieListByCharacterUrl(url: String): Either<Failure, List<String>> {
-        return characterRepository.fetchSpecieListByCharacterUrl(url)
+        return if (url.isNotEmpty())
+            Either.Right(specieUrlList)
+        else
+            Either.Left(ItemNotFoundException)
     }
 
     override suspend fun fetchSpecieDetailBySpecieUrl(url: String): Either<Failure, Specie> {

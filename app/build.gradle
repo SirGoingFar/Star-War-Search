@@ -93,4 +93,6 @@ dependencies {
     testImplementation testDependecies.hamcrest
     testImplementation testDependecies.androidXTestRUnner
     testImplementation testDependecies.robolectric
+    testImplementation testDependecies.mockitoCore
+    androidTestImplementation testDependecies.mockitoAndroid
 }
