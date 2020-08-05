@@ -4,6 +4,8 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.trivago.starwarsearch.BuildConfig
+import com.trivago.starwarsearch.domain.network.DefaultAppNetworkService
+import com.trivago.starwarsearch.domain.network.client.AppNetworkService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -37,6 +39,9 @@ class NetworkModule {
     fun providesGson(): Gson {
         return Gson()
     }
+
+    @Provides
+    fun provideAppNetworkService(defaultAppNetworkService: DefaultAppNetworkService):AppNetworkService = defaultAppNetworkService
 
 
     private fun logInterceptor(): HttpLoggingInterceptor {

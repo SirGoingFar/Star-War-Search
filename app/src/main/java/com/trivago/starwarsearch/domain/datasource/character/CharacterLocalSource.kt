@@ -7,7 +7,7 @@ import com.trivago.starwarsearch.domain.dto.character_search.Character
 import com.trivago.starwarsearch.domain.dto.character_search.SearchCharacterResponse
 import javax.inject.Inject
 
-class CharacterLocalSource @Inject constructor() :
+open class CharacterLocalSource @Inject constructor() :
     CharacterDataSource {
 
     private val characterList: ArrayList<Character> = ArrayList()

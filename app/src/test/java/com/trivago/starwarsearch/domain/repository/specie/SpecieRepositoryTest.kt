@@ -3,6 +3,7 @@ package com.trivago.starwarsearch.domain.repository.specie
 import com.trivago.starwarsearch.core.exception.ItemNotFoundException
 import com.trivago.starwarsearch.domain.datasource.specie.FakeSpecieLocalSource
 import com.trivago.starwarsearch.domain.datasource.specie.FakeSpecieRemoteSource
+import com.trivago.starwarsearch.domain.datasource.specie.data.CharacterDataUtil
 import com.trivago.starwarsearch.domain.datasource.specie.data.SpecieDataUtil
 import com.trivago.starwarsearch.domain.datasource.specie.data.SpecieDataUtil.planetList
 import com.trivago.starwarsearch.domain.datasource.specie.data.SpecieDataUtil.specieList
@@ -47,7 +48,7 @@ class SpecieRepositoryTest {
 
     @Test
     fun fetchSpecieListByValidCharacterUrl_returnsSpecieUrlList() = runBlockingTest {
-        val invalidCharacterUrl = SpecieDataUtil.characterUrl[0]
+        val invalidCharacterUrl = CharacterDataUtil.characterUrl[0]
         repository.fetchSpecieListByCharacterUrl(invalidCharacterUrl).fold({}, {
             assertThat(it, `is`(specieUrlList))
         })

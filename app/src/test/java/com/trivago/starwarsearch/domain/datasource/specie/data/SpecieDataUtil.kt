@@ -13,14 +13,6 @@ object SpecieDataUtil {
         "http://swapi.dev/api/species/5/"
     )
 
-    val characterUrl = listOf(
-        "http://swapi.dev/api/people/1/",
-        "http://swapi.dev/api/people/2/",
-        "http://swapi.dev/api/people/3/",
-        "http://swapi.dev/api/people/4/",
-        "http://swapi.dev/api/people/5/"
-    )
-
     val specieList = listOf(
         Specie(
             "Name",

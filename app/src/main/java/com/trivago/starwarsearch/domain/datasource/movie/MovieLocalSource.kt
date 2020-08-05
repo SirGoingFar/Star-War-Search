@@ -7,7 +7,7 @@ import com.trivago.starwarsearch.domain.dto.film.Movie
 import com.trivago.starwarsearch.domain.repository.character.CharacterRepository
 import javax.inject.Inject
 
-class MovieLocalSource @Inject constructor(
+open class MovieLocalSource @Inject constructor(
     private val characterRepository: CharacterRepository
 ) : MovieDataSource {
 

@@ -69,16 +69,13 @@ class DefaultCharacterRepository @Inject constructor(
         }
     }
 
-    override suspend fun fetchCharacterByUrl(cardId: String): Either<Failure, Character> {
-        return localDataSource.fetchCharacterByUrl(cardId)
+    override suspend fun fetchCharacterByUrl(characterUrl: String): Either<Failure, Character> {
+        return localDataSource.fetchCharacterByUrl(characterUrl)
     }
 
     override suspend fun fetchCharacterList(): Either<Failure, List<Character>> {
         return localDataSource.fetchCharacterList()
     }
-
-    private fun hasSearchTermChanged(searchTerm: String) =
-        (mLastSearchTerm == null && searchTerm.isNotEmpty()) || mLastSearchTerm != searchTerm
 
     override suspend fun fetchFilmListByCharacterUrl(url: String): Either<Failure, List<String>> {
         return localDataSource.fetchFilmListByCharacterUrl(url)
@@ -87,4 +84,8 @@ class DefaultCharacterRepository @Inject constructor(
     override suspend fun fetchSpecieListByCharacterUrl(url: String): Either<Failure, List<String>> {
         return localDataSource.fetchSpecieListByCharacterUrl(url)
     }
+
+    private fun hasSearchTermChanged(searchTerm: String) =
+        (mLastSearchTerm == null && searchTerm.isNotEmpty()) || mLastSearchTerm != searchTerm
+
 }

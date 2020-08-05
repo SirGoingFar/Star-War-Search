@@ -1,7 +1,13 @@
 package com.trivago.starwarsearch.domain.datasource.specie
 
 import com.trivago.starwarsearch.core.exception.ItemNotFoundException
+import com.trivago.starwarsearch.domain.datasource.character.FakeCharacterLocalSource
+import com.trivago.starwarsearch.domain.datasource.character.FakeCharacterRemoteSource
+import com.trivago.starwarsearch.domain.datasource.specie.data.CharacterDataUtil
 import com.trivago.starwarsearch.domain.datasource.specie.data.SpecieDataUtil
+import com.trivago.starwarsearch.domain.dto.specie.Planet
+import com.trivago.starwarsearch.domain.dto.specie.Specie
+import com.trivago.starwarsearch.domain.repository.character.FakeCharacterRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
@@ -12,11 +18,23 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class SpecieLocalSourceTest {
 
-    private lateinit var localSource: FakeSpecieLocalSource
+    private lateinit var localSource: SpecieLocalSource
+    private lateinit var specieUrlList: List<String>
+    private lateinit var specieUrlToSpecieMap: Map<String, Specie>
+    private lateinit var specieUrlToPlanetMap: Map<String, Planet>
 
     @Before
-    fun setup() = runBlockingTest {
-        localSource = FakeSpecieLocalSource(SpecieDataUtil.specieUrlList)
+    fun setUp() = runBlockingTest {
+        specieUrlList = SpecieDataUtil.specieUrlList
+        specieUrlToSpecieMap = SpecieDataUtil.specieUrlToSpecieMap
+        specieUrlToPlanetMap = SpecieDataUtil.specieUrlToPlanetMap
+
+        localSource = SpecieLocalSource(
+            FakeCharacterRepository(
+                FakeCharacterLocalSource(),
+                FakeCharacterRemoteSource(CharacterDataUtil.searchCharacterResponse)
+            )
+        )
 
         //seed the local cache
         SpecieDataUtil.specieList.forEachIndexed { index, specie ->

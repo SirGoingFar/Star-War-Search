@@ -8,7 +8,7 @@ interface CharacterRepository {
 
     suspend fun searchCharacterWithTerm(term: String): Either<Failure, List<Character>>
 
-    suspend fun fetchCharacterByUrl(cardId: String): Either<Failure, Character>
+    suspend fun fetchCharacterByUrl(characterUrl: String): Either<Failure, Character>
 
     suspend fun fetchCharacterList(): Either<Failure, List<Character>>
 
