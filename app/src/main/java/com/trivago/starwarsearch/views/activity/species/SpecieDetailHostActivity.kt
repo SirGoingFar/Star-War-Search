@@ -1,6 +1,7 @@
 package com.trivago.starwarsearch.views.activity.species
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.views.activity.BaseActivity
 import com.trivago.starwarsearch.views.fragment.species.SpecieDetailFragment
@@ -10,6 +11,7 @@ class SpecieDetailHostActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val specieUrl: String? = intent.extras?.getString(EXTRA_SPECIE_URL)
 
@@ -21,6 +23,15 @@ class SpecieDetailHostActivity : BaseActivity() {
         popAllFragments()
         startFragmentOnMaster(SpecieDetailFragment.newInstance(specieUrl), true)
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

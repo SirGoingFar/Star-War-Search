@@ -1,4 +1,4 @@
-package com.safeboda.android_sirgoingfar.views.adapter
+package com.trivago.starwarsearch.views.adapter
 
 import android.content.Context
 import android.util.Log

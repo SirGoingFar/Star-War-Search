@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.safeboda.android_sirgoingfar.views.adapter.LinearLayoutManagerWrapper
+import com.trivago.starwarsearch.views.adapter.LinearLayoutManagerWrapper
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.core.extension.show
 import com.trivago.starwarsearch.core.utils.observe
