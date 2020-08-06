@@ -1,6 +1,5 @@
 package com.trivago.starwarsearch.network.di.module
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.trivago.starwarsearch.BuildConfig
@@ -18,7 +17,7 @@ import java.util.concurrent.TimeUnit
 class NetworkModule {
 
     @Provides
-    fun providesRetrofit(context: Context): Retrofit {
+    fun providesRetrofit(): Retrofit {
 
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(logInterceptor())
@@ -41,7 +40,8 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideAppNetworkService(defaultAppNetworkService: DefaultAppNetworkService):AppNetworkService = defaultAppNetworkService
+    fun provideAppNetworkService(defaultAppNetworkService: DefaultAppNetworkService): AppNetworkService =
+        defaultAppNetworkService
 
 
     private fun logInterceptor(): HttpLoggingInterceptor {
