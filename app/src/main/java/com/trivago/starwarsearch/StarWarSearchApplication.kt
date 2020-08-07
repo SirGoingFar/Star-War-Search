@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import com.trivago.starwarsearch.di.component.AppComponent
-import com.trivago.starwarsearch.di.component.DaggerAppComponent
+import com.trivago.starwarsearch.common.di.component.AppComponent
+import com.trivago.starwarsearch.common.di.component.DaggerAppComponent
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump

@@ -1,6 +1,6 @@
 package com.trivago.starwarsearch.util
 
-import com.trivago.starwarsearch.views.util.formatHeight
+import com.trivago.starwarsearch.presentation.util.formatHeight
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.Test

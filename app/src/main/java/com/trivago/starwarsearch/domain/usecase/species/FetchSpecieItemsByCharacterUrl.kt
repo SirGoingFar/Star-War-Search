@@ -1,10 +1,10 @@
 package com.trivago.starwarsearch.domain.usecase.species
 
-import com.trivago.starwarsearch.core.exception.Failure
-import com.trivago.starwarsearch.core.functional.Either
-import com.trivago.starwarsearch.core.interactor.UseCase
-import com.trivago.starwarsearch.domain.dto.common.ListItem
-import com.trivago.starwarsearch.domain.repository.specie.SpecieRepository
+import com.trivago.starwarsearch.common.core.exception.Failure
+import com.trivago.starwarsearch.common.core.functional.Either
+import com.trivago.starwarsearch.common.core.interactor.UseCase
+import com.trivago.starwarsearch.data.dto.common.ListItem
+import com.trivago.starwarsearch.data.repository.specie.SpecieRepository
 import javax.inject.Inject
 
 class FetchSpecieItemsByCharacterUrl @Inject constructor(
