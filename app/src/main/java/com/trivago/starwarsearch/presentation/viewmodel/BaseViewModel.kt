@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.trivago.starwarsearch.common.core.exception.Failure
 import com.trivago.starwarsearch.common.core.exception.NetworkFailure
 import com.trivago.starwarsearch.common.core.utils.ERROR_MESSAGE_BAD_INTERNET_CONNECTION
+import com.trivago.starwarsearch.common.core.utils.runOnMainThread
 import com.trivago.starwarsearch.presentation.viewaction.BaseAction
 import com.trivago.starwarsearch.presentation.viewstate.BaseViewState
 import kotlinx.coroutines.*
@@ -84,12 +85,16 @@ abstract class BaseViewModel<
     }
 
     protected fun handleGeneralFailure(failure: Failure) {
-        if (failure is NetworkFailure.Connection)
-            toastMsg(ERROR_MESSAGE_BAD_INTERNET_CONNECTION, Toast.LENGTH_LONG)
+        runOnMainThread {
+            if (failure is NetworkFailure.Connection)
+                toastMsg(ERROR_MESSAGE_BAD_INTERNET_CONNECTION, Toast.LENGTH_LONG)
+        }
     }
 
     protected fun toastMsg(text: Any, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, text.toString(), duration).show()
+        runOnMainThread {
+            Toast.makeText(context, text.toString(), duration).show()
+        }
     }
 
     protected open fun onLoadData(vararg input: Any? = emptyArray()) {}

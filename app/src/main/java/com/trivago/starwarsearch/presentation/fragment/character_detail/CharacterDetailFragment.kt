@@ -44,9 +44,6 @@ class CharacterDetailFragment :
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
 
-        //observe Action
-        observe(screenViewModel.actionLiveData, actionObserver)
-
         screenViewModel.onViewCreated(arguments!!.getString(EXTRA_CHARACTER_URL))
     }
 

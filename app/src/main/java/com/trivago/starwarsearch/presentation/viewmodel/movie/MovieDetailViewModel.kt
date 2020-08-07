@@ -23,9 +23,15 @@ class MovieDetailViewModel @Inject constructor(
         return when (action) {
             is MovieDetailAction.UpdateFilmDetail -> state.copy(
                 showLoader = false,
+                errorMsg = null,
                 film = action.film
             )
-            else -> state
+
+            is MovieDetailAction.FilmDetailLoadError -> state.copy(
+                showLoader = false,
+                errorMsg = action.msg,
+                film = null
+            )
         }
     }
 
@@ -35,7 +41,7 @@ class MovieDetailViewModel @Inject constructor(
             job = {
                 fetchFilmDetailByUrl.execute(url).fold(
                     {
-                        performAction(MovieDetailAction.FilmDetailLoadError("Unable to load film details"))
+                        emit(MovieDetailAction.FilmDetailLoadError("Unable to fetch movie details"))
                     },
                     {
                         emit(MovieDetailAction.UpdateFilmDetail(film = it))

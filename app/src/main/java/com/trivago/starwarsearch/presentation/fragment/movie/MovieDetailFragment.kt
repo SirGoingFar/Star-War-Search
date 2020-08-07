@@ -40,27 +40,19 @@ class MovieDetailFragment : BaseInjectableFragment<MovieDetailState, MovieDetail
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
 
-        //observe Action
-        observe(screenViewModel.actionLiveData, actionObserver)
-
         screenViewModel.onViewCreated(arguments!!.getString(ARG_FILM_URL))
     }
 
     override fun onStateChange(viewState: MovieDetailState) {
         with(viewState) {
             pb_loader.show(showLoader)
-            ns_filled.show(!showLoader)
+            ns_filled.show(!showLoader && errorMsg.isNullOrEmpty())
+            errorMsg?.let { toast(it) }
+
             film?.let {
                 tv_title_value.text = it.title
                 tv_crawl_value.text = it.openingCrawl
             }
-        }
-    }
-
-    override fun onPerformAction(viewAction: MovieDetailAction) {
-        if (viewAction is MovieDetailAction.FilmDetailLoadError) {
-            toast(viewAction.msg)
-            pb_loader.show(false)
         }
     }
 

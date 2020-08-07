@@ -131,6 +131,9 @@ class CharacterSearchViewModel @Inject constructor(
                         )
                     )
                 )
+            }else{
+                toastMsg(failure.errorMsg)
+                emit(CharacterSearchAction.ToggleLoader(false))
             }
             return
         } else if (failure is EndOfListException) {

@@ -65,9 +65,6 @@ class CharacterSearchFragment :
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
 
-        //observe Action
-        observe(screenViewModel.actionLiveData, actionObserver)
-
         //Setup toolbar
         characterActivity.setSupportActionBar(search_toolbar)
         characterActivity.supportActionBar!!.title = ""

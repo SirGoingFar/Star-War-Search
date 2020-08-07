@@ -47,9 +47,6 @@ class MovieListFragment : BaseInjectableFragment<MovieListState, MovieListViewAc
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
 
-        //observe Action
-        observe(screenViewModel.actionLiveData, actionObserver)
-
         screenViewModel.onViewCreated(arguments!!.getString(ARG_CHARACTER_URL))
     }
 

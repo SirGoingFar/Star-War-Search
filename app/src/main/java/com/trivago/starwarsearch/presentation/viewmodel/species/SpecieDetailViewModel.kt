@@ -26,7 +26,13 @@ class SpecieDetailViewModel @Inject constructor(
 
     override fun onChangeState(action: SpecieDetailAction): SpecieDetailState {
         return when (action) {
+            is SpecieDetailAction.SpecieDetailFetchUnsuccessful -> state.copy(
+                errorMsg = action.msg,
+                showLoader = false,
+                specie = null
+            )
             is SpecieDetailAction.UpdateSpecielDetail -> state.copy(
+                errorMsg = null,
                 showLoader = false,
                 specie = action.specie
             )
@@ -46,7 +52,7 @@ class SpecieDetailViewModel @Inject constructor(
             job = {
                 fetchSpecieDetailByUrl.execute(url).fold(
                     {
-                        performAction(SpecieDetailAction.SpecieDetailFetchUnsuccessful("Unable to fetch specie detail"))
+                        emit(SpecieDetailAction.SpecieDetailFetchUnsuccessful("Unable to fetch specie detail"))
                     },
                     {
                         if (it.population.isNullOrEmpty() || it.homeWorldName.isNullOrEmpty())

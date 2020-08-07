@@ -27,9 +27,6 @@ class SpeciesHostActivity : BaseInjectableActivity<SpeciesHostState, SpeciesHost
         super.onCreate(savedInstanceState)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        //observe State Change
-        observe(screenViewModel.stateLiveData, stateObserver)
-
         //observe Action
         observe(screenViewModel.actionLiveData, actionObserver)
 

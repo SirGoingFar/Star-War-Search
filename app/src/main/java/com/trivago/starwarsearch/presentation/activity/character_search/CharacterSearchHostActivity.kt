@@ -27,9 +27,6 @@ class CharacterSearchHostActivity :
         appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        //observe State Change
-        observe(screenViewModel.stateLiveData, stateObserver)
-
         //observe Action
         observe(screenViewModel.actionLiveData, actionObserver)
 

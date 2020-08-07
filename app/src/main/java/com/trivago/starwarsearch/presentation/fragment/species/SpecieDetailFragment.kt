@@ -40,16 +40,14 @@ class SpecieDetailFragment : BaseInjectableFragment<SpecieDetailState, SpecieDet
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
 
-        //observe Action
-        observe(screenViewModel.actionLiveData, actionObserver)
-
         screenViewModel.onViewCreated(arguments!!.getString(ARG_SPECIE_URL))
     }
 
     override fun onStateChange(viewState: SpecieDetailState) {
         with(viewState) {
             pbr_loader.show(showLoader)
-            nsv_filled.show(!showLoader)
+            nsv_filled.show(!showLoader && errorMsg.isNullOrEmpty())
+            errorMsg?.let { toast(it) }
 
             specie?.let {
                 tv_name_value.text = it.name
@@ -59,13 +57,6 @@ class SpecieDetailFragment : BaseInjectableFragment<SpecieDetailState, SpecieDet
                 tv_homeworld_population_value.text =
                     if (it.population.isNullOrEmpty()) "-" else it.population
             }
-        }
-    }
-
-    override fun onPerformAction(viewAction: SpecieDetailAction) {
-        if (viewAction is SpecieDetailAction.SpecieDetailFetchUnsuccessful) {
-            toast(viewAction.msg)
-            pbr_loader.show(false)
         }
     }
 

@@ -27,25 +27,36 @@ open class BaseRemoteSource @Inject constructor() {
                 //There is a network connection, proceed!
                 true -> {
 
-                    //API response
-                    val response = call.invoke()
+                    return try{
+                        //API response
+                        val response = call.invoke()
 
-                    when (response.isSuccessful) {
+                        when (response.isSuccessful) {
 
-                        //API call was successful
-                        true -> Either.Right(response.body()!!)
+                            //API call was successful
+                            true -> Either.Right(response.body()!!)
 
-                        //API call was not successful
-                        false -> Either.Left(
+                            //API call was not successful
+                            false -> Either.Left(
+                                NetworkFailure.ApiCall(
+                                    response.code(),
+                                    Result.Error(
+                                        response.errorBody(),
+                                        defaultMsg = ERROR_NETWORK_CALL_NOT_SUCCESSFUL
+                                    ).errorMessage
+                                )
+                            )
+
+                        }
+                    }catch (ex:Exception){
+                        Either.Left(
                             NetworkFailure.ApiCall(
-                                response.code(),
-                                Result.Error(
-                                    response.errorBody(),
-                                    defaultMsg = ERROR_NETWORK_CALL_NOT_SUCCESSFUL
-                                ).errorMessage
+                                if (ex.isHttpThrowable()) ex.getHttpCode() else 0,
+                                parseHttpError(
+                                    ERROR_NETWORK_CALL_NOT_SUCCESSFUL
+                                )(ex)
                             )
                         )
-
                     }
 
                 }
