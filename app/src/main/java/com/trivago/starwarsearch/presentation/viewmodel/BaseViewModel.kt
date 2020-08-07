@@ -49,7 +49,6 @@ abstract class BaseViewModel<
     }
 
     protected fun performAction(viewAction: ViewAction, allowMultiple: Boolean = false) {
-        //Avoid the execution
         lastAction?.let {
             if (!allowMultiple && lastAction == viewAction)
                 return
@@ -65,7 +64,7 @@ abstract class BaseViewModel<
     }
 
     protected fun doJobWithDispatcher(
-        coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO,
+        coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
         job: suspend () -> Unit,
         successJob: (suspend () -> Unit)? = null,
         failureJob: (suspend (throwable: Throwable) -> Unit)? = null
