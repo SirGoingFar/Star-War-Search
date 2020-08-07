@@ -6,6 +6,14 @@ apply from: "$project.rootDir/tools/vcs-script.gradle"
 
 android {
 
+    signingConfigs {
+        config {
+            storeFile file('../keystore/KeyStore.jks')
+            storePassword 'trivago'
+            keyAlias = 'trivagotest'
+            keyPassword 'trivago'
+        }
+    }
     compileSdkVersion projectToolVersion.compileSdkVersion
     buildToolsVersion projectToolVersion.buildToolsVersion
 
