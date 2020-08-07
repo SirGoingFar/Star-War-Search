@@ -12,6 +12,7 @@ import com.trivago.starwarsearch.domain.usecase.character_search.SearchCharacter
 import com.trivago.starwarsearch.presentation.viewaction.character_search.CharacterSearchAction
 import com.trivago.starwarsearch.presentation.viewmodel.BaseViewModel
 import com.trivago.starwarsearch.presentation.viewstate.character_search.CharacterSearchState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
@@ -40,7 +41,7 @@ class CharacterSearchViewModel @Inject constructor(
                         emit(CharacterSearchAction.SetQueryText(mSearchTerm ?: ""))
                     }
                 })
-            }
+            }, coroutineDispatcher = Dispatchers.Main
         )
 
     }

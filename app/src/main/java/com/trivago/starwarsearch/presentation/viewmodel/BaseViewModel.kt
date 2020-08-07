@@ -64,7 +64,7 @@ abstract class BaseViewModel<
     }
 
     protected fun doJobWithDispatcher(
-        coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
+        coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO,
         job: suspend () -> Unit,
         successJob: (suspend () -> Unit)? = null,
         failureJob: (suspend (throwable: Throwable) -> Unit)? = null
