@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply from: "$project.rootDir/tools/vcs-script.gradle"
 
 android {
 
@@ -22,8 +21,8 @@ android {
         minSdkVersion projectToolVersion.minSdkVersion
         targetSdkVersion projectToolVersion.targetSdkVersion
 
-        versionCode gitVersionCode
-        versionName "$gitVersionName"
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
