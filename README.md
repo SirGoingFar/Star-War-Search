@@ -14,8 +14,11 @@ The application is built to be design responsive and to scale across multiple de
 In a bid to improve the application user experience, the application is built to hold fetched API data in a local, light-weight cache that is constantly refreshed on search term change - this means that the data that was previously fetched from the API need not be fetched again if the user demands the same data later. With this capability, the application navigation becomes smoother and faster.
 
 ## DESIGN AND USER FLOW
-As stated above, the application has two main areas: character search and character detail. The character detail area is further broken down to the movies and species sub-areas.
-These sub-areas are accessible from the main area (character detail).
+As stated above, the application has two main areas: character search and character detail. 
+
+The character search screen contains a search field and a paginated character result list.
+
+The character detail area is further broken down to the movies and species sub-areas. These sub-areas are accessible from the main area (character detail).
 
 This further breakdown was hugely influenced by the thirst for application scalability and good user experience while searching characters with the application.
 
@@ -112,3 +115,5 @@ The logging interceptor library is used in this application to log the data bein
 6. **Calligraphy**
 
 Calligraphy is a font styling library for applying custom font in Android applications. It is used in the application to set a custom font for texts.
+
+Finally, the codebase also contain test cases.
