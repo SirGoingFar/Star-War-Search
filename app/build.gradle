@@ -2,10 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-//apply from: "$project.rootDir/tools/vcs-script.gradle"
+apply from: "$project.rootDir/tools/vcs-script.gradle"
 
 android {
 
+    signingConfigs {
+        config {
+            storeFile file('../keystore/KeyStore.jks')
+            storePassword 'trivago'
+            keyAlias = 'trivagotest'
+            keyPassword 'trivago'
+        }
+    }
     compileSdkVersion projectToolVersion.compileSdkVersion
     buildToolsVersion projectToolVersion.buildToolsVersion
 
@@ -14,8 +22,8 @@ android {
         minSdkVersion projectToolVersion.minSdkVersion
         targetSdkVersion projectToolVersion.targetSdkVersion
 
-        versionCode /*gitVersionCode*/ 1
-        versionName /*"$gitVersionName"*/ "1.0"
+        versionCode gitVersionCode
+        versionName "$gitVersionName"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
