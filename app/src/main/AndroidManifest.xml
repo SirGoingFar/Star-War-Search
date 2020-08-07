@@ -15,14 +15,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.activity.CharacterActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            android:name=".presentation.activity.species.SpecieDetailHostActivity"
+            android:label="@string/text_specie_detail" />
+        <activity
+            android:name=".presentation.activity.species.SpeciesHostActivity"
+            android:label="@string/text_species" />
+        <activity
+            android:name=".presentation.activity.movie.MovieDetailHostActivity"
+            android:label="@string/text_movie_detail" />
+        <activity
+            android:name=".presentation.activity.movie.MovieHostActivity"
+            android:label="@string/text_movies" />
+        <activity
+            android:name=".presentation.activity.character_search.CharacterSearchHostActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.activity.character_detail.CharacterDetailHostActivity"
+            android:label="@string/text_character_detail" />
     </application>
 
 </manifest>

@@ -31,9 +31,8 @@ task clean(type: Delete) {
 ext {
     multidexVersion = '1.0.3'
     coreKtxVersion = '1.3.0'
+    appCompatVersion = '1.1.0'
     constraintLayoutVersion = '2.0.0-beta4'
-    designVersion = '28.0.0'
-    supportVersion = '28.0.0'
     daggerVersion = '2.25.2'
     retrofitVersion = '2.6.2'
     livedataVersion = '2.2.0-rc03'
@@ -42,9 +41,6 @@ ext {
     coroutinesLifecycleVersion = '2.2.0-rc03'
     fragmentVersion = '1.1.0'
     materialVersion = '1.2.0-alpha05'
-    civVersion = '2.2.0'
-    picassoVersion = '2.71828'
-    swipeRefreshVersion = '1.0.0'
     loggingInterceptorVersion = '3.10.0'
     calligraphyVersion = '3.1.1'
     calligraphyViewPumpVersion = '2.0.3'
@@ -59,19 +55,17 @@ ext {
     hamcrestVersion = '1.3'
     junitVersion = '4.12'
     robolectricVersion = '4.3.1'
-    mockitoCoreVersion = '2.25.0'
-    mockitoInlineVersion = '2.13.0'
 
 
     androidDependencies = [
             kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             multidex          : "com.android.support:multidex:$multidexVersion",
+            appCompat         : "androidx.appcompat:appcompat:$appCompatVersion",
             core              : "androidx.core:core-ktx:$coreKtxVersion",
             constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             material          : "com.google.android.material:material:$materialVersion",
             coroutineLifeCycle: "androidx.lifecycle:lifecycle-runtime-ktx:${coroutinesLifecycleVersion}",
             fragment          : "androidx.fragment:fragment-ktx:$fragmentVersion",
-            swipeRefresh      : "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion",
             coroutineKotlin   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesAndroidVersion",
             coroutineAndroid  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesAndroidVersion}",
             lifeCycle         : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
@@ -82,8 +76,6 @@ ext {
     thirdPartyLibDepencies = [
             daggerCompiler     : "com.google.dagger:dagger-compiler:$daggerVersion",
             dagger             : "com.google.dagger:dagger:$daggerVersion",
-            circularImageView  : "de.hdodenhof:circleimageview:$civVersion",
-            picasso            : "com.squareup.picasso:picasso:$picassoVersion",
             retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             gsonConverter      : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
@@ -94,7 +86,7 @@ ext {
     testDependecies = [
             junit             : "junit:junit:$junitVersion",
             androidTestExt    : "androidx.test.ext:junit:$androidXTestExtVersion",
-            coroutineTest    : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion",
+            coroutineTest     : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion",
             androidXEspresso  : "androidx.test.espresso:espresso-core:$espressoVersion",
             fragmentTest      : "androidx.fragment:fragment-testing:$fragmentTestVersion",
             androidTestCore   : "androidx.test:core-ktx:$androidXTestCoreVersion",

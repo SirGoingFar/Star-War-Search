@@ -1,0 +1,177 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/content_gutter"
+        android:layout_marginBottom="@dimen/dimen_32dp"
+        android:orientation="vertical">
+
+        <!-- Name -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_vertical_space">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <!-- Label -->
+            <TextView
+                android:id="@+id/tv_name_label"
+                style="@style/CharacterDetailItemLabel"
+                android:text="@string/text_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Value -->
+            <TextView
+                android:id="@+id/tv_name_value"
+                style="@style/CharacterDetailItemValue"
+                android:text="@string/sample_text_value"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toTopOf="@+id/tv_name_label" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Gender -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_vertical_space">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <!-- Label -->
+            <TextView
+                android:id="@+id/tv_gender_label"
+                style="@style/CharacterDetailItemLabel"
+                android:text="@string/text_gender"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Value -->
+            <TextView
+                android:id="@+id/tv_gender_value"
+                style="@style/CharacterDetailItemValue"
+                android:text="@string/sample_text_value"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_gender_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline7"
+                app:layout_constraintTop_toTopOf="@+id/tv_gender_label" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Birth Year -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_vertical_space">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <!-- Label -->
+            <TextView
+                android:id="@+id/tv_birth_year_label"
+                style="@style/CharacterDetailItemLabel"
+                android:text="@string/text_birth_year"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Value -->
+            <TextView
+                android:id="@+id/tv_birth_year_value"
+                style="@style/CharacterDetailItemValue"
+                android:text="@string/sample_text_value"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_birth_year_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/tv_birth_year_label" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Height -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_vertical_space">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <!-- Label -->
+            <TextView
+                android:id="@+id/tv_height_label"
+                style="@style/CharacterDetailItemLabel"
+                android:text="@string/text_height"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Value -->
+            <TextView
+                android:id="@+id/tv_height_value"
+                style="@style/CharacterDetailItemValue"
+                android:text="@string/sample_text_value"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_height_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/tv_height_label" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_see_more_label"
+            style="@style/SeeMoreLabel"
+            android:text="@string/text_see_more" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_see_species"
+            style="@style/ViewMoreButton">
+
+            <TextView
+                style="@style/ViewMoreButtonLabel"
+                android:text="@string/text_specie_s_belonged_to" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_see_films"
+            style="@style/ViewMoreButton">
+
+            <TextView
+                style="@style/ViewMoreButtonLabel"
+                android:text="@string/text_movies_appeared_in" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

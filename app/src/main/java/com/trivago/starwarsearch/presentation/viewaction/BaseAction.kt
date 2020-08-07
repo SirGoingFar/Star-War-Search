@@ -1,0 +1,3 @@
+package com.trivago.starwarsearch.presentation.viewaction
+
+interface BaseAction

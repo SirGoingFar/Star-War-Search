@@ -2,10 +2,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-//apply from: "$project.rootDir/tools/vcs-script.gradle"
 
 android {
 
+    signingConfigs {
+        config {
+            storeFile file('../keystore/KeyStore.jks')
+            storePassword 'trivago'
+            keyAlias = 'trivagotest'
+            keyPassword 'trivago'
+        }
+    }
     compileSdkVersion projectToolVersion.compileSdkVersion
     buildToolsVersion projectToolVersion.buildToolsVersion
 
@@ -14,8 +21,8 @@ android {
         minSdkVersion projectToolVersion.minSdkVersion
         targetSdkVersion projectToolVersion.targetSdkVersion
 
-        versionCode /*gitVersionCode*/1
-        versionName /*"$gitVersionName"*/"1.0"
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -56,11 +63,11 @@ dependencies {
     implementation androidDependencies.kotlin
     implementation androidDependencies.multidex
     implementation androidDependencies.core
+    implementation androidDependencies.appCompat
     implementation androidDependencies.constraintLayout
     implementation androidDependencies.material
     implementation androidDependencies.coroutineLifeCycle
     implementation androidDependencies.fragment
-    implementation androidDependencies.swipeRefresh
     implementation androidDependencies.coroutineKotlin
     implementation androidDependencies.coroutineAndroid
     implementation androidDependencies.lifeCycle
@@ -69,11 +76,7 @@ dependencies {
 
     //Third-party Libraries Dependencies
     implementation thirdPartyLibDepencies.dagger
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt thirdPartyLibDepencies.daggerCompiler
-    implementation thirdPartyLibDepencies.circularImageView
-    implementation thirdPartyLibDepencies.picasso
     implementation thirdPartyLibDepencies.retrofit
     implementation thirdPartyLibDepencies.gsonConverter
     implementation thirdPartyLibDepencies.loggingInterceptor
@@ -93,4 +96,5 @@ dependencies {
     testImplementation testDependecies.hamcrest
     testImplementation testDependecies.androidXTestRUnner
     testImplementation testDependecies.robolectric
+
 }
