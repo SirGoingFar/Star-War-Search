@@ -18,7 +18,6 @@ As stated above, the application has two main areas: character search and charac
 These sub-areas are accessible from the main area (character detail).
 
 This further breakdown was hugely influenced by the thirst for application scalability and good user experience while searching characters with the application.
-__(Please see the figure below for more clarity)__
 
 In order to explain to context, let us consider what a typical Star Wars character is and how it is modeled from the API side. Amongst other properties of a character are the films (the movie(s) the character appeared in) and the specie of the character. These properties are modeled as arrays. By programming implications, this means the properties (films and species) are growing properties whose size will change over the time (when the data is updated).
 If these properties grow infinitely (e.g. say a character is famous and has appeared in over 100 movies and will yet appear in 50 movies more), an attempt to load all the details of this character on a single screen will lead to many issues. Among them are:
