@@ -1,6 +1,5 @@
 package com.trivago.starwarsearch
 
-//import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
@@ -13,6 +12,7 @@ import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.flipper.plugins.leakcanary2.FlipperLeakListener
 import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin
+import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin
 import com.facebook.soloader.SoLoader
 import com.trivago.starwarsearch.common.di.component.AppComponent
 import com.trivago.starwarsearch.common.di.component.DaggerAppComponent
@@ -78,6 +78,17 @@ class StarWarSearchApplication : MultiDexApplication() {
             client.addPlugin(CrashReporterPlugin.getInstance())
             client.addPlugin(DatabasesFlipperPlugin(this))
             client.addPlugin(LeakCanary2FlipperPlugin())
+            client.addPlugin(
+                SharedPreferencesFlipperPlugin(
+                    this,
+                    listOf(
+                        SharedPreferencesFlipperPlugin.SharedPreferencesDescriptor(
+                            "add_shared_pref_name",
+                            0 //use right mode
+                        )
+                    )
+                )
+            )
             client.start()
         }
     }
