@@ -38,6 +38,9 @@
         <activity
             android:name=".presentation.activity.character_detail.CharacterDetailHostActivity"
             android:label="@string/text_character_detail" />
+
+        <activity android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

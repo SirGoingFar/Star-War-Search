@@ -16,7 +16,9 @@ import com.trivago.starwarsearch.presentation.fragment.species.SpecieDetailFragm
 import com.trivago.starwarsearch.presentation.fragment.species.SpeciesListFragment
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         NetworkModule::class,
