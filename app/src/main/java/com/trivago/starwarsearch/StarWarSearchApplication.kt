@@ -11,12 +11,15 @@ import com.facebook.flipper.plugins.crashreporter.CrashReporterPlugin
 import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
+import com.facebook.flipper.plugins.leakcanary2.FlipperLeakListener
+import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin
 import com.facebook.soloader.SoLoader
 import com.trivago.starwarsearch.common.di.component.AppComponent
 import com.trivago.starwarsearch.common.di.component.DaggerAppComponent
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
+import leakcanary.LeakCanary
 
 
 class StarWarSearchApplication : MultiDexApplication() {
@@ -62,6 +65,11 @@ class StarWarSearchApplication : MultiDexApplication() {
     }
 
     private fun initDebuggingTool() {
+
+        LeakCanary.config = LeakCanary.config.copy(
+            onHeapAnalyzedListener = FlipperLeakListener()
+        )
+
         SoLoader.init(this, false)
         val enableFlipper = FlipperUtils.shouldEnableFlipper(this)
         if (BuildConfig.DEBUG && enableFlipper) {
@@ -69,6 +77,7 @@ class StarWarSearchApplication : MultiDexApplication() {
             client.addPlugin(InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()))
             client.addPlugin(CrashReporterPlugin.getInstance())
             client.addPlugin(DatabasesFlipperPlugin(this))
+            client.addPlugin(LeakCanary2FlipperPlugin())
             client.start()
         }
     }
