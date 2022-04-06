@@ -1,14 +1,15 @@
 package com.trivago.starwarsearch
 
+//import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
+import com.facebook.flipper.plugins.crashreporter.CrashReporterPlugin
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
-//import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
 import com.trivago.starwarsearch.common.di.component.AppComponent
 import com.trivago.starwarsearch.common.di.component.DaggerAppComponent
@@ -40,7 +41,7 @@ class StarWarSearchApplication : MultiDexApplication() {
         //set font stylist
         initCalligraphyConfig()
 
-        //set up Flipper
+        //set up debugging tools
         initDebuggingTool()
     }
 
@@ -65,12 +66,13 @@ class StarWarSearchApplication : MultiDexApplication() {
         if (BuildConfig.DEBUG && enableFlipper) {
             val client = AndroidFlipperClient.getInstance(this)
             client.addPlugin(InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()))
+            client.addPlugin(CrashReporterPlugin.getInstance())
             client.start()
         }
     }
 
-    private fun stopDebuggingTool(){
-        if(!BuildConfig.DEBUG){
+    private fun stopDebuggingTool() {
+        if (!BuildConfig.DEBUG) {
             return
         }
 

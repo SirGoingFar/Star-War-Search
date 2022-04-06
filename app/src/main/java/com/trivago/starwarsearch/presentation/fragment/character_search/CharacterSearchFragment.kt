@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.trivago.starwarsearch.presentation.adapter.LinearLayoutManagerWrapper
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.common.core.extension.show
 import com.trivago.starwarsearch.common.core.utils.observe
 import com.trivago.starwarsearch.data.dto.character_search.Character
 import com.trivago.starwarsearch.presentation.activity.character_search.CharacterSearchHostActivity
+import com.trivago.starwarsearch.presentation.adapter.LinearLayoutManagerWrapper
 import com.trivago.starwarsearch.presentation.adapter.character_search.CharacterRecyclerViewAdapter
 import com.trivago.starwarsearch.presentation.fragment.BaseInjectableFragment
 import com.trivago.starwarsearch.presentation.util.addInfiniteScrollListener
@@ -72,7 +72,7 @@ class CharacterSearchFragment :
 
         //Setup RecyclerView
         rv_search_result.layoutManager =
-            LinearLayoutManagerWrapper(context!!, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManagerWrapper(requireContext(), LinearLayoutManager.VERTICAL, false)
         rv_search_result.setHasFixedSize(true)
         mAdapter =
             CharacterRecyclerViewAdapter(
@@ -94,7 +94,8 @@ class CharacterSearchFragment :
         //Setup the Search field
         val searchItem = menu.findItem(R.id.action_search)
         mSearchView = searchItem!!.actionView as SearchView
-        val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager =
+            requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
         mSearchView?.isIconifiedByDefault = false
         mSearchView?.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
         mSearchView?.requestFocus()
