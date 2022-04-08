@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.trivago.starwarsearch.BuildConfig
 import com.trivago.starwarsearch.R
 import com.trivago.starwarsearch.StarWarSearchApplication
 import com.trivago.starwarsearch.common.core.extension.show
@@ -44,7 +45,7 @@ class CharacterDetailFragment :
         //observe State Change
         observe(screenViewModel.stateLiveData, stateObserver)
 
-        screenViewModel.onViewCreated(arguments!!.getString(EXTRA_CHARACTER_URL))
+        screenViewModel.onViewCreated(requireArguments().getString(EXTRA_CHARACTER_URL))
     }
 
     override fun onStateChange(viewState: CharacterDetailState) {
