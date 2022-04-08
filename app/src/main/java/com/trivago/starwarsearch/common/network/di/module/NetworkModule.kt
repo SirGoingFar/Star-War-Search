@@ -33,7 +33,7 @@ class NetworkModule {
         if(adc?.getPluginByClass(NetworkFlipperPlugin::class.java) == null){
             val nfp = NetworkFlipperPlugin()
             httpClientBuilder.addNetworkInterceptor(FlipperOkhttpInterceptor(nfp))
-            //Todo: Do this in an interactor
+            //Todo: Do this in an interactor - e.g. NetworkDebugToolConfigurer
             AndroidFlipperClient.getInstanceIfInitialized()?.addPlugin(nfp)
         }
 
